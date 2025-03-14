@@ -20,6 +20,8 @@ type WasteAllocation = {
   revenue_eur: number;
   cost_per_kg_eur: number;
   max_food_waste_percentage: number;
+  isOverMaxLimit: boolean;
+  maxAllowedKg: number;
   nutrientMatchScore?: number;
   nutrients?: {
     nitrogen_kg: number;
@@ -67,172 +69,100 @@ export type FertilizerExportData = {
   };
 };
 
-// Function to calculate optimal waste allocation to maximize profit
+// Function to calculate optimal waste allocation based on payment rates and capacity
 export const calculateOptimalWasteAllocation = (
   companies: FertilizerCompany[], 
-  totalFoodWasteKg: number = 10000, // Default to 10 tons if not specified
-  establishmentType: string = "default", // Default establishment type for nutrient content
-  forceFullAllocation: boolean = false // Whether to force allocation of all waste
+  totalFoodWasteKg: number = 10000,
+  establishmentType: string = "default",
+  forceFullAllocation: boolean = false
 ): WasteAllocation[] => {
   // Get nutrient content for this type of establishment
   const nutrientContent = nutrientContentByEstablishmentType[establishmentType] || 
-                          nutrientContentByEstablishmentType["default"];
+                         nutrientContentByEstablishmentType["default"];
   
-  // First pass: calculate each company's fertilizer needs and nutrient requirements
-  const companyData = companies.map(company => {
-    // Calculate fertilizer needs more accurately based on customer data
-    const fertilizerNeeds = company.customers.reduce((sum, farmer) => {
-      // If detailed crop data is available, use it for more precise calculation
-      if (farmer.crops && farmer.crops.length > 0) {
-        return sum + farmer.crops.reduce((cropSum, crop) => {
-          // Base fertilizer on crop's nitrogen needs from soil requirements, with default of 200kg/hectare if not specified
-          const fertilizerPerHectare = crop.soil_requirements.nitrogen_needs_kg_per_hectare || 200;
-          return cropSum + (fertilizerPerHectare * crop.field_size_hectares);
-        }, 0);
-      } else {
-        // Fallback to estimate based on total farm size if no crop data
-        return sum + farmer.total_farm_size_hectares * 250;
-      }
-    }, 0);
-    
-    // Calculate maximum waste based on percentage (with fallback to 0 if undefined)
-    const maxWastePercentage = company.max_food_waste_percentage ?? 0;
-    const maxWaste = fertilizerNeeds * (maxWastePercentage / 100);
-    
-    // Calculate nutrient match score - how well this waste source matches this company's needs
-    // Higher score means better match
-    let nutrientMatchScore = 1.0; // Default score
-    
-    // If we have detailed customer data with crops, calculate nutrient match
-    if (company.customers.some(farmer => farmer.crops && farmer.crops.length > 0)) {
-      const nutrientNeeds = {
-        nitrogen: 0,
-        phosphorus: 0,
-        carbon: 0,
-        lime: 0
-      };
-      
-      // Calculate total nutrient needs for this company
-      company.customers.forEach(farmer => {
-        if (farmer.crops) {
-          farmer.crops.forEach(crop => {
-            const area = crop.field_size_hectares;
-            
-            // Add nitrogen needs
-            nutrientNeeds.nitrogen += (crop.soil_requirements.nitrogen_needs_kg_per_hectare || 0) * area;
-            
-            // Add phosphorus needs if available
-            if (crop.soil_requirements.phosphorus_needs_kg_per_hectare) {
-              nutrientNeeds.phosphorus += crop.soil_requirements.phosphorus_needs_kg_per_hectare * area;
-            }
-            
-            // Add carbon needs if available
-            if (crop.soil_requirements.carbon_needs_kg_per_hectare) {
-              nutrientNeeds.carbon += crop.soil_requirements.carbon_needs_kg_per_hectare * area;
-            }
-          });
-        }
-      });
-      
-      // Calculate match score based on nutrient composition
-      // Higher score for better matches between waste nutrients and company needs
-      const nitrogenMatch = nutrientContent.nitrogen_kg > 0 ? 
-        Math.min(nutrientNeeds.nitrogen / (totalFoodWasteKg * nutrientContent.nitrogen_kg), 1) : 0;
-      
-      const phosphorusMatch = nutrientContent.phosphorus_kg > 0 && nutrientNeeds.phosphorus > 0 ? 
-        Math.min(nutrientNeeds.phosphorus / (totalFoodWasteKg * nutrientContent.phosphorus_kg), 1) : 0;
-      
-      const carbonMatch = nutrientContent.carbon_kg > 0 && nutrientNeeds.carbon > 0 ? 
-        Math.min(nutrientNeeds.carbon / (totalFoodWasteKg * nutrientContent.carbon_kg), 1) : 0;
-      
-      // Calculate weighted match score
-      nutrientMatchScore = (nitrogenMatch * 0.5) + (phosphorusMatch * 0.3) + (carbonMatch * 0.2) + 0.5;
-    }
-    
+  // Calculate initial equal distribution
+  const baseAllocation = totalFoodWasteKg / companies.length;
+  
+  // First pass: Allocate respecting max percentages
+  const allocations = companies.map(company => {
+    const maxAllowedKg = (totalFoodWasteKg * (company.max_food_waste_percentage || 100)) / 100;
+    const actualAllocation = Math.min(baseAllocation, maxAllowedKg);
+
+    // Calculate nutrients in this allocation
+    const nutrientsInAllocation = {
+      nitrogen_kg: actualAllocation * nutrientContent.nitrogen_kg,
+      phosphorus_kg: actualAllocation * nutrientContent.phosphorus_kg,
+      carbon_kg: actualAllocation * nutrientContent.carbon_kg,
+      lime_kg: actualAllocation * nutrientContent.lime_kg
+    };
+
+    // Set allocation percentage on company
+    company.waste_allocation_percentage = Math.round((actualAllocation / totalFoodWasteKg) * 100);
+
     return {
-      company,
-      fertilizerNeeds,
-      maxWaste,
-      nutrientMatchScore,
-      // Economic value score combines price offered and nutrient match
-      economicValueScore: (company.cost_per_kg_eur || 0) * nutrientMatchScore
+      companyId: company.id,
+      companyName: company.name,
+      allocation_kg: actualAllocation,
+      revenue_eur: actualAllocation * (company.cost_per_kg_eur || 0),
+      cost_per_kg_eur: company.cost_per_kg_eur || 0,
+      max_food_waste_percentage: company.max_food_waste_percentage || 0,
+      isOverMaxLimit: false, // We're now respecting limits
+      maxAllowedKg,
+      nutrients: nutrientsInAllocation
     };
   });
-  
-  // Sort by economic value score (price * nutrient match), highest first
-  const sortedCompanyData = [...companyData].sort((a, b) => 
-    b.economicValueScore - a.economicValueScore
-  );
-  
-  // Second pass: allocate waste based on economic value and maximum capacity
-  let remainingWaste = totalFoodWasteKg;
-  const allocations: WasteAllocation[] = [];
-  
-  for (const data of sortedCompanyData) {
-    if (remainingWaste <= 0) break;
-    
-    // Allocate minimum of what's available and what company can accept
-    const allocation = Math.min(remainingWaste, data.maxWaste);
-    
-    // Calculate the nutrient content in this allocation
-    const nutrientsInAllocation = {
-      nitrogen_kg: allocation * nutrientContent.nitrogen_kg,
-      phosphorus_kg: allocation * nutrientContent.phosphorus_kg,
-      carbon_kg: allocation * nutrientContent.carbon_kg,
-      lime_kg: allocation * nutrientContent.lime_kg
-    };
-    
-    allocations.push({
-      companyId: data.company.id,
-      companyName: data.company.name,
-      allocation_kg: allocation,
-      revenue_eur: allocation * (data.company.cost_per_kg_eur || 0),
-      cost_per_kg_eur: data.company.cost_per_kg_eur || 0,
-      max_food_waste_percentage: data.company.max_food_waste_percentage || 0,
-      nutrients: nutrientsInAllocation,
-      nutrientMatchScore: data.nutrientMatchScore
-    });
-    
-    remainingWaste -= allocation;
+
+  // Calculate remaining unallocated waste
+  const totalAllocated = allocations.reduce((sum, alloc) => sum + alloc.allocation_kg, 0);
+  const remainingWaste = totalFoodWasteKg - totalAllocated;
+
+  // If force full allocation is enabled and there's remaining waste,
+  // distribute it to companies that can still take more
+  if (forceFullAllocation && remainingWaste > 0) {
+    // Find companies that can take more waste
+    const companiesWithCapacity = allocations
+      .map((allocation, index) => ({
+        allocation,
+        remainingCapacity: allocation.maxAllowedKg - allocation.allocation_kg,
+        index
+      }))
+      .filter(item => item.remainingCapacity > 0)
+      .sort((a, b) => b.remainingCapacity - a.remainingCapacity);
+
+    // Distribute remaining waste proportionally to available capacity
+    if (companiesWithCapacity.length > 0) {
+      let remainingToDistribute = remainingWaste;
+      const totalRemainingCapacity = companiesWithCapacity.reduce((sum, item) => sum + item.remainingCapacity, 0);
+
+      companiesWithCapacity.forEach(({ allocation, remainingCapacity }) => {
+        if (remainingToDistribute <= 0) return;
+
+        const share = (remainingCapacity / totalRemainingCapacity) * remainingWaste;
+        const additionalAllocation = Math.min(share, remainingCapacity);
+
+        // Update allocation
+        allocation.allocation_kg += additionalAllocation;
+        allocation.revenue_eur = allocation.allocation_kg * allocation.cost_per_kg_eur;
+        
+        // Update nutrients
+        if (allocation.nutrients) {
+          allocation.nutrients.nitrogen_kg += additionalAllocation * nutrientContent.nitrogen_kg;
+          allocation.nutrients.phosphorus_kg += additionalAllocation * nutrientContent.phosphorus_kg;
+          allocation.nutrients.carbon_kg += additionalAllocation * nutrientContent.carbon_kg;
+          allocation.nutrients.lime_kg += additionalAllocation * nutrientContent.lime_kg;
+        }
+
+        // Update company percentage
+        const company = companies.find(c => c.id === allocation.companyId);
+        if (company) {
+          company.waste_allocation_percentage = Math.round((allocation.allocation_kg / totalFoodWasteKg) * 100);
+        }
+
+        remainingToDistribute -= additionalAllocation;
+      });
+    }
   }
-  
-  // Third pass: if we need to force full allocation and there's still waste left,
-  // distribute remaining waste to all companies proportionally
-  if (forceFullAllocation && remainingWaste > 0 && allocations.length > 0) {
-    // Calculate total current allocation
-    const totalAllocated = allocations.reduce((sum, alloc) => sum + alloc.allocation_kg, 0);
-    
-    // Distribute remaining waste based on current allocation proportions
-    allocations.forEach(allocation => {
-      const proportion = allocation.allocation_kg / totalAllocated;
-      const additionalWaste = remainingWaste * proportion;
-      
-      // Update allocation with additional waste
-      allocation.allocation_kg += additionalWaste;
-      allocation.revenue_eur += additionalWaste * allocation.cost_per_kg_eur;
-      
-      // Update nutrient content
-      if (allocation.nutrients) {
-        allocation.nutrients.nitrogen_kg += additionalWaste * nutrientContent.nitrogen_kg;
-        allocation.nutrients.phosphorus_kg += additionalWaste * nutrientContent.phosphorus_kg;
-        allocation.nutrients.carbon_kg += additionalWaste * nutrientContent.carbon_kg;
-        allocation.nutrients.lime_kg += additionalWaste * nutrientContent.lime_kg;
-      }
-    });
-    
-    // All waste is now allocated
-    remainingWaste = 0;
-  }
-  
-  // Calculate allocation percentages based on total available food waste, not just what was allocated
-  // This ensures percentages reflect actual portion of total available waste, not just allocated waste
-  for (const company of companies) {
-    const allocation = allocations.find(a => a.companyId === company.id);
-    company.waste_allocation_percentage = allocation 
-      ? Math.round((allocation.allocation_kg / totalFoodWasteKg) * 100) 
-      : 0;
-  }
-  
+
   return allocations;
 };
 
@@ -554,7 +484,7 @@ const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <h4 className="text-sm font-medium text-gray-600">Total Food Waste</h4>
-            <p className="text-xl font-bold text-blue-700">{totalFoodWasteKg.toLocaleString()} kg</p>
+            <p className="text-xl font-bold text-blue-700">{totalFoodWasteKg?.toLocaleString() || 0} kg</p>
           </div>
           <div>
             <h4 className="text-sm font-medium text-gray-600">Primary Source Type</h4>
@@ -565,44 +495,76 @@ const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
             <p className="text-xl font-bold text-green-700">€{totalRevenue.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</p>
           </div>
         </div>
-        
+
         {/* Add allocation summary */}
-        {wasteAllocations.length > 0 && (
-          <div className="mt-3 pt-3 border-t border-blue-200">
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <h4 className="text-sm font-medium text-gray-600">Total Allocated</h4>
-                {(() => {
-                  const totalAllocated = wasteAllocations.reduce((sum, alloc) => sum + alloc.allocation_kg, 0);
-                  const allocatedPercentage = Math.round((totalAllocated / totalFoodWasteKg) * 100);
-                  return (
-                    <p className="text-md font-bold text-blue-700">
-                      {totalAllocated.toLocaleString()} kg ({allocatedPercentage}%)
-                    </p>
-                  );
-                })()}
-              </div>
-              <div>
-                <h4 className="text-sm font-medium text-gray-600">Unallocated Waste</h4>
-                {(() => {
-                  const totalAllocated = wasteAllocations.reduce((sum, alloc) => sum + alloc.allocation_kg, 0);
-                  const unallocated = totalFoodWasteKg - totalAllocated;
-                  const unallocatedPercentage = Math.round((unallocated / totalFoodWasteKg) * 100);
-                  return (
-                    <p className={`text-md font-bold ${unallocated > 0 ? 'text-orange-600' : 'text-green-600'}`}>
-                      {unallocated.toLocaleString()} kg ({unallocatedPercentage}%)
-                      {unallocated > 0 && !forceFullAllocation && (
-                        <span className="text-xs ml-2 text-gray-500">
-                          (Enable "Force Full Allocation" to use all waste)
-                        </span>
-                      )}
-                    </p>
-                  );
-                })()}
-              </div>
-            </div>
+        <div className="mt-4 pt-4 border-t border-blue-200">
+          <h4 className="text-sm font-medium text-gray-600 mb-3">Food Waste Allocation</h4>
+          <div className="relative h-6 bg-gray-200 rounded-full overflow-hidden">
+            {wasteAllocations.map((allocation, index) => {
+              const percentage = (allocation.allocation_kg / (totalFoodWasteKg || 1)) * 100;
+              const colors = [
+                'bg-blue-500',
+                'bg-green-500',
+                'bg-yellow-500',
+                'bg-purple-500',
+                'bg-red-500',
+                'bg-indigo-500'
+              ];
+              return (
+                <div
+                  key={allocation.companyId}
+                  className={`absolute h-full ${colors[index % colors.length]} transition-all duration-300`}
+                  style={{
+                    left: `${wasteAllocations.slice(0, index).reduce((sum, a) => 
+                      sum + (a.allocation_kg / (totalFoodWasteKg || 1)) * 100, 0)}%`,
+                    width: `${percentage}%`
+                  }}
+                  title={`${allocation.companyName}: ${allocation.allocation_kg.toLocaleString()} kg (${percentage.toFixed(1)}%)`}
+                />
+              );
+            })}
           </div>
-        )}
+          <div className="mt-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+            {wasteAllocations.map((allocation, index) => {
+              const percentage = (allocation.allocation_kg / (totalFoodWasteKg || 1)) * 100;
+              const colors = [
+                'bg-blue-500',
+                'bg-green-500',
+                'bg-yellow-500',
+                'bg-purple-500',
+                'bg-red-500',
+                'bg-indigo-500'
+              ];
+              return (
+                <div key={allocation.companyId} className="flex items-center text-sm">
+                  <div className={`w-3 h-3 rounded-full ${colors[index % colors.length]} mr-2`} />
+                  <span className="text-gray-600 truncate">{allocation.companyName}:</span>
+                  <span className="ml-1 font-medium">{percentage.toFixed(1)}%</span>
+                </div>
+              );
+            })}
+          </div>
+          {/* Add unallocated waste if any */}
+          {(() => {
+            const totalAllocated = wasteAllocations.reduce((sum, alloc) => sum + alloc.allocation_kg, 0);
+            const unallocated = (totalFoodWasteKg || 0) - totalAllocated;
+            if (unallocated > 0) {
+              const unallocatedPercentage = (unallocated / (totalFoodWasteKg || 1)) * 100;
+              return (
+                <div className="mt-2 text-sm text-orange-600">
+                  <span className="font-medium">Unallocated: </span>
+                  {unallocated.toLocaleString()} kg ({unallocatedPercentage.toFixed(1)}%)
+                  {!forceFullAllocation && (
+                    <span className="text-gray-500 ml-2">
+                      (Enable "Force Full Allocation" to distribute remaining waste)
+                    </span>
+                  )}
+                </div>
+              );
+            }
+            return null;
+          })()}
+        </div>
       </div>
       
       <div className="space-y-3">
@@ -635,10 +597,22 @@ const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
                   </span>
                   {wasteAllocation && (
                     <div className="mt-1">
-                      <p className="text-xs text-gray-600">{wasteAllocation.allocation_kg.toLocaleString()} kg allocated</p>
+                      <div className="flex items-center justify-end">
+                        <p className="text-xs text-gray-600">{wasteAllocation.allocation_kg.toLocaleString()} kg allocated</p>
+                        {wasteAllocation.isOverMaxLimit && (
+                          <span className="ml-2 px-2 py-0.5 bg-red-100 text-red-800 text-xs font-medium rounded">
+                            Exceeds Limit
+                          </span>
+                        )}
+                      </div>
                       <p className="text-xs font-medium text-green-600">
                         €{wasteAllocation.revenue_eur.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} revenue
                       </p>
+                      {wasteAllocation.isOverMaxLimit && (
+                        <p className="text-xs text-red-600 mt-1">
+                          Max allowed: {wasteAllocation.maxAllowedKg.toLocaleString()} kg
+                        </p>
+                      )}
                       {wasteAllocation.nutrientMatchScore && (
                         <p className="text-xs mt-1">
                           <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">
