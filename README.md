@@ -1,38 +1,69 @@
-# Holy Hack - repo team Ctrl-Alt-Elite
+# Holy Hack - Team Ctrl-Alt-Elite
 
-Welcome to your personal Holy Hack GitHub repository! This serves as a central hub for submitting your code to be reviewed during the judging sessions. You should modify this README file to better explain your project to the judges, making it easier for them to understand your work.
+Welcome to our Holy Hack project! This repository contains our solution for optimizing food waste distribution and fertilizer management.
 
 ## 🚀 Getting Started
 
-Each team will be given its own repository within the **Holy Hack** GitHub organization, this is your personal repo. Follow these steps to participate:
+### Prerequisites
 
-1. **Clone this repository to your local machine using**:
-   ```sh
-   git clone https://github.com/HOLY-HACK-ORGANIZATION/YOUR-TEAM-REPO.git
-   ```
-2. **Add your project files to the appropriate directory in your team's repository**.
-3. **Commit and push your changes**:
-   ```sh
-   git add .
-   git commit -m "added my feature"
-   git push origin my-feature
-   ```
-4. **Submit a pull request (PR)** to your team's repository for code review and merge.
+Before running the application, make sure you have the following installed:
 
-## Repository Structure (Per Team)
+1. **Node.js and npm**: 
+   - Download and install Node.js from [https://nodejs.org/](https://nodejs.org/)
+   - npm (Node Package Manager) is included with Node.js installation
+   - To verify installation, open a terminal and run:
+     ```sh
+     node --version
+     npm --version
+     ```
+
+### Running the Application
+
+1. **Clone the repository**:
+   ```sh
+   git clone https://github.com/HOLY-HACK-ORGANIZATION/Team-20-Ctrl-Alt-Elite-OMP.git
+   cd Team-20-Ctrl-Alt-Elite-OMP
+   ```
+
+2. **Navigate to the dashboard directory**:
+   ```sh
+   cd dashboard
+   ```
+
+3. **Install dependencies**:
+   ```sh
+   npm install
+   ```
+
+4. **Start the development server**:
+   ```sh
+   npm run dev
+   ```
+
+5. **Access the application**:
+   - Open your browser and navigate to [http://localhost:3000](http://localhost:3000)
+   - The page will automatically update as you make changes to the code
+
+## Project Structure
 
 ```
-YOUR-TEAM-REPO/
-│-- README.md # Documentation for your team's project
-│-- src/ # source directory
-│-- docs/ # Additional documentation or assets
+dashboard/
+│-- src/ # Source code directory
+│   │-- components/ # React components
+│   │-- types/ # TypeScript type definitions
+│   │-- utils/ # Utility functions
+│-- public/ # Static assets
 ```
 
-## Contribution Guidelines
+## Need Help?
 
-- Make sure your code is clean and well documented.
-- Follow coding standards and best practices.
-- Submit your projects before the 16:00 deadline.
+If you encounter any issues:
+1. Make sure all prerequisites are properly installed
+2. Try removing the `node_modules` folder and running `npm install` again
+3. Contact the project maintainers for support
 
-## ❓ Need help?
-If you have any questions, you can contact the github guru's.
+## Contributing
+
+- Make sure your code is clean and well documented
+- Follow coding standards and best practices
+- Submit your changes through pull requests
