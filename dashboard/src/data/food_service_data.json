@@ -15,17 +15,17 @@
               "Q4": {
                 "October": {
                   "revenue": 145000,
-                  "food_waste_kg": 435,
+                  "food_waste_kg": 4350,
                   "waste_factor": 0.003
                 },
                 "November": {
                   "revenue": 152000,
-                  "food_waste_kg": 456,
+                  "food_waste_kg": 4560,
                   "waste_factor": 0.003
                 },
                 "December": {
                   "revenue": 178000,
-                  "food_waste_kg": 534,
+                  "food_waste_kg": 5340,
                   "waste_factor": 0.003
                 }
               }
@@ -34,17 +34,17 @@
               "Q1": {
                 "January": {
                   "revenue": 138000,
-                  "food_waste_kg": 414,
+                  "food_waste_kg": 4140,
                   "waste_factor": 0.003
                 },
                 "February": {
                   "revenue": 142000,
-                  "food_waste_kg": 426,
+                  "food_waste_kg": 4260,
                   "waste_factor": 0.003
                 },
                 "March": {
                   "revenue": 148000,
-                  "food_waste_kg": 444,
+                  "food_waste_kg": 4440,
                   "waste_factor": 0.003
                 }
               }
@@ -56,15 +56,15 @@
               "Q2": {
                 "April": {
                   "projected_revenue": 155000,
-                  "estimated_waste_kg": 465
+                  "estimated_waste_kg": 4650
                 },
                 "May": {
                   "projected_revenue": 162000,
-                  "estimated_waste_kg": 486
+                  "estimated_waste_kg": 4860
                 },
                 "June": {
                   "projected_revenue": 168000,
-                  "estimated_waste_kg": 504
+                  "estimated_waste_kg": 5040
                 }
               }
             }
@@ -88,17 +88,17 @@
               "Q4": {
                 "October": {
                   "revenue": 325000,
-                  "food_waste_kg": 2275,
+                  "food_waste_kg": 22750,
                   "waste_factor": 0.007
                 },
                 "November": {
                   "revenue": 318000,
-                  "food_waste_kg": 2226,
+                  "food_waste_kg": 22260,
                   "waste_factor": 0.007
                 },
                 "December": {
                   "revenue": 332000,
-                  "food_waste_kg": 2324,
+                  "food_waste_kg": 23240,
                   "waste_factor": 0.007
                 }
               }
@@ -107,17 +107,17 @@
               "Q1": {
                 "January": {
                   "revenue": 328000,
-                  "food_waste_kg": 2296,
+                  "food_waste_kg": 22960,
                   "waste_factor": 0.007
                 },
                 "February": {
                   "revenue": 315000,
-                  "food_waste_kg": 2205,
+                  "food_waste_kg": 22050,
                   "waste_factor": 0.007
                 },
                 "March": {
                   "revenue": 322000,
-                  "food_waste_kg": 2254,
+                  "food_waste_kg": 22540,
                   "waste_factor": 0.007
                 }
               }
@@ -129,15 +129,15 @@
               "Q2": {
                 "April": {
                   "projected_revenue": 325000,
-                  "estimated_waste_kg": 2275
+                  "estimated_waste_kg": 22750
                 },
                 "May": {
                   "projected_revenue": 328000,
-                  "estimated_waste_kg": 2296
+                  "estimated_waste_kg": 22960
                 },
                 "June": {
                   "projected_revenue": 330000,
-                  "estimated_waste_kg": 2310
+                  "estimated_waste_kg": 23100
                 }
               }
             }
@@ -161,17 +161,17 @@
               "Q4": {
                 "October": {
                   "revenue": 485000,
-                  "food_waste_kg": 2425,
+                  "food_waste_kg": 24250,
                   "waste_factor": 0.005
                 },
                 "November": {
                   "revenue": 492000,
-                  "food_waste_kg": 2460,
+                  "food_waste_kg": 24600,
                   "waste_factor": 0.005
                 },
                 "December": {
                   "revenue": 345000,
-                  "food_waste_kg": 1725,
+                  "food_waste_kg": 17250,
                   "waste_factor": 0.005
                 }
               }
@@ -180,17 +180,17 @@
               "Q1": {
                 "January": {
                   "revenue": 478000,
-                  "food_waste_kg": 2390,
+                  "food_waste_kg": 23900,
                   "waste_factor": 0.005
                 },
                 "February": {
                   "revenue": 488000,
-                  "food_waste_kg": 2440,
+                  "food_waste_kg": 24400,
                   "waste_factor": 0.005
                 },
                 "March": {
                   "revenue": 495000,
-                  "food_waste_kg": 2475,
+                  "food_waste_kg": 24750,
                   "waste_factor": 0.005
                 }
               }
@@ -202,15 +202,15 @@
               "Q2": {
                 "April": {
                   "projected_revenue": 490000,
-                  "estimated_waste_kg": 2450
+                  "estimated_waste_kg": 24500
                 },
                 "May": {
                   "projected_revenue": 485000,
-                  "estimated_waste_kg": 2425
+                  "estimated_waste_kg": 24250
                 },
                 "June": {
                   "projected_revenue": 320000,
-                  "estimated_waste_kg": 1600
+                  "estimated_waste_kg": 16000
                 }
               }
             }
@@ -256,17 +256,17 @@
               "Q4": {
                 "October": {
                   "revenue": 98000,
-                  "food_waste_kg": 588,
+                  "food_waste_kg": 5880,
                   "waste_factor": 0.006
                 },
                 "November": {
                   "revenue": 96000,
-                  "food_waste_kg": 576,
+                  "food_waste_kg": 5760,
                   "waste_factor": 0.006
                 },
                 "December": {
                   "revenue": 99000,
-                  "food_waste_kg": 594,
+                  "food_waste_kg": 5940,
                   "waste_factor": 0.006
                 }
               }
@@ -275,17 +275,17 @@
               "Q1": {
                 "January": {
                   "revenue": 97000,
-                  "food_waste_kg": 582,
+                  "food_waste_kg": 5820,
                   "waste_factor": 0.006
                 },
                 "February": {
                   "revenue": 95000,
-                  "food_waste_kg": 570,
+                  "food_waste_kg": 5700,
                   "waste_factor": 0.006
                 },
                 "March": {
                   "revenue": 98000,
-                  "food_waste_kg": 588,
+                  "food_waste_kg": 5880,
                   "waste_factor": 0.006
                 }
               }
@@ -297,15 +297,15 @@
               "Q2": {
                 "April": {
                   "projected_revenue": 98000,
-                  "estimated_waste_kg": 588
+                  "estimated_waste_kg": 5880
                 },
                 "May": {
                   "projected_revenue": 99000,
-                  "estimated_waste_kg": 594
+                  "estimated_waste_kg": 5940
                 },
                 "June": {
                   "projected_revenue": 98000,
-                  "estimated_waste_kg": 588
+                  "estimated_waste_kg": 5880
                 }
               }
             }
@@ -329,17 +329,17 @@
               "Q4": {
                 "October": {
                   "revenue": 245000,
-                  "food_waste_kg": 980,
+                  "food_waste_kg": 9800,
                   "waste_factor": 0.004
                 },
                 "November": {
                   "revenue": 238000,
-                  "food_waste_kg": 952,
+                  "food_waste_kg": 9520,
                   "waste_factor": 0.004
                 },
                 "December": {
                   "revenue": 215000,
-                  "food_waste_kg": 860,
+                  "food_waste_kg": 8600,
                   "waste_factor": 0.004
                 }
               }
@@ -348,17 +348,17 @@
               "Q1": {
                 "January": {
                   "revenue": 242000,
-                  "food_waste_kg": 968,
+                  "food_waste_kg": 9680,
                   "waste_factor": 0.004
                 },
                 "February": {
                   "revenue": 248000,
-                  "food_waste_kg": 992,
+                  "food_waste_kg": 9920,
                   "waste_factor": 0.004
                 },
                 "March": {
                   "revenue": 252000,
-                  "food_waste_kg": 1008,
+                  "food_waste_kg": 10080,
                   "waste_factor": 0.004
                 }
               }
@@ -370,15 +370,15 @@
               "Q2": {
                 "April": {
                   "projected_revenue": 255000,
-                  "estimated_waste_kg": 1020
+                  "estimated_waste_kg": 10200
                 },
                 "May": {
                   "projected_revenue": 258000,
-                  "estimated_waste_kg": 1032
+                  "estimated_waste_kg": 10320
                 },
                 "June": {
                   "projected_revenue": 245000,
-                  "estimated_waste_kg": 980
+                  "estimated_waste_kg": 9800
                 }
               }
             }
@@ -402,17 +402,17 @@
               "Q4": {
                 "October": {
                   "revenue": 68000,
-                  "food_waste_kg": 340,
+                  "food_waste_kg": 3400,
                   "waste_factor": 0.005
                 },
                 "November": {
                   "revenue": 65000,
-                  "food_waste_kg": 325,
+                  "food_waste_kg": 3250,
                   "waste_factor": 0.005
                 },
                 "December": {
                   "revenue": 52000,
-                  "food_waste_kg": 260,
+                  "food_waste_kg": 2600,
                   "waste_factor": 0.005
                 }
               }
@@ -421,17 +421,17 @@
               "Q1": {
                 "January": {
                   "revenue": 64000,
-                  "food_waste_kg": 320,
+                  "food_waste_kg": 3200,
                   "waste_factor": 0.005
                 },
                 "February": {
                   "revenue": 66000,
-                  "food_waste_kg": 330,
+                  "food_waste_kg": 3300,
                   "waste_factor": 0.005
                 },
                 "March": {
                   "revenue": 68000,
-                  "food_waste_kg": 340,
+                  "food_waste_kg": 3400,
                   "waste_factor": 0.005
                 }
               }
@@ -443,15 +443,15 @@
               "Q2": {
                 "April": {
                   "projected_revenue": 67000,
-                  "estimated_waste_kg": 335
+                  "estimated_waste_kg": 3350
                 },
                 "May": {
                   "projected_revenue": 65000,
-                  "estimated_waste_kg": 325
+                  "estimated_waste_kg": 3250
                 },
                 "June": {
                   "projected_revenue": 45000,
-                  "estimated_waste_kg": 225
+                  "estimated_waste_kg": 2250
                 }
               }
             }
@@ -474,17 +474,17 @@
               "Q4": {
                 "October": {
                   "revenue": 385000,
-                  "food_waste_kg": 2310,
+                  "food_waste_kg": 23100,
                   "waste_factor": 0.006
                 },
                 "November": {
                   "revenue": 425000,
-                  "food_waste_kg": 2550,
+                  "food_waste_kg": 25500,
                   "waste_factor": 0.006
                 },
                 "December": {
                   "revenue": 520000,
-                  "food_waste_kg": 3120,
+                  "food_waste_kg": 31200,
                   "waste_factor": 0.006
                 }
               }
@@ -493,17 +493,17 @@
               "Q1": {
                 "January": {
                   "revenue": 280000,
-                  "food_waste_kg": 1680,
+                  "food_waste_kg": 16800,
                   "waste_factor": 0.006
                 },
                 "February": {
                   "revenue": 320000,
-                  "food_waste_kg": 1920,
+                  "food_waste_kg": 19200,
                   "waste_factor": 0.006
                 },
                 "March": {
                   "revenue": 375000,
-                  "food_waste_kg": 2250,
+                  "food_waste_kg": 22500,
                   "waste_factor": 0.006
                 }
               }
@@ -515,15 +515,447 @@
               "Q2": {
                 "April": {
                   "projected_revenue": 395000,
-                  "estimated_waste_kg": 2370
+                  "estimated_waste_kg": 23700
                 },
                 "May": {
                   "projected_revenue": 420000,
-                  "estimated_waste_kg": 2520
+                  "estimated_waste_kg": 25200
                 },
                 "June": {
                   "projected_revenue": 445000,
-                  "estimated_waste_kg": 2670
+                  "estimated_waste_kg": 26700
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ff002",
+      "name": "Gourmet Express",
+      "type": "Fast Food Chain",
+      "locations": [
+        {
+          "id": "ge001",
+          "name": "Gourmet Express Downtown",
+          "address": "Main Street 45, 1000 Brussels",
+          "meals_per_day": 1000,
+          "historical_data": {
+            "2023": {
+              "Q4": {
+                "October": {
+                  "revenue": 217500,
+                  "food_waste_kg": 6530,
+                  "waste_factor": 0.003
+                },
+                "November": {
+                  "revenue": 228000,
+                  "food_waste_kg": 6840,
+                  "waste_factor": 0.003
+                },
+                "December": {
+                  "revenue": 267000,
+                  "food_waste_kg": 8010,
+                  "waste_factor": 0.003
+                }
+              }
+            },
+            "2024": {
+              "Q1": {
+                "January": {
+                  "revenue": 207000,
+                  "food_waste_kg": 6210,
+                  "waste_factor": 0.003
+                },
+                "February": {
+                  "revenue": 213000,
+                  "food_waste_kg": 6390,
+                  "waste_factor": 0.003
+                },
+                "March": {
+                  "revenue": 222000,
+                  "food_waste_kg": 6660,
+                  "waste_factor": 0.003
+                }
+              }
+            }
+          },
+          "running_average_waste_factor": 0.003,
+          "projected_data": {
+            "2024": {
+              "Q2": {
+                "April": {
+                  "projected_revenue": 232500,
+                  "estimated_waste_kg": 6980
+                },
+                "May": {
+                  "projected_revenue": 243000,
+                  "estimated_waste_kg": 7290
+                },
+                "June": {
+                  "projected_revenue": 252000,
+                  "estimated_waste_kg": 7560
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "hosp002",
+      "name": "St. Mary's Hospital Catering",
+      "type": "Hospital",
+      "locations": [
+        {
+          "id": "smh001",
+          "name": "St. Mary's Hospital Main Cafeteria",
+          "address": "Health Ave 10, 3000 Leuven",
+          "meals_per_day": 3000,
+          "historical_data": {
+            "2023": {
+              "Q4": {
+                "October": {
+                  "revenue": 487500,
+                  "food_waste_kg": 34130,
+                  "waste_factor": 0.007
+                },
+                "November": {
+                  "revenue": 477000,
+                  "food_waste_kg": 33390,
+                  "waste_factor": 0.007
+                },
+                "December": {
+                  "revenue": 498000,
+                  "food_waste_kg": 34960,
+                  "waste_factor": 0.007
+                }
+              }
+            },
+            "2024": {
+              "Q1": {
+                "January": {
+                  "revenue": 492000,
+                  "food_waste_kg": 34440,
+                  "waste_factor": 0.007
+                },
+                "February": {
+                  "revenue": 472500,
+                  "food_waste_kg": 33080,
+                  "waste_factor": 0.007
+                },
+                "March": {
+                  "revenue": 483000,
+                  "food_waste_kg": 33810,
+                  "waste_factor": 0.007
+                }
+              }
+            }
+          },
+          "running_average_waste_factor": 0.007,
+          "projected_data": {
+            "2024": {
+              "Q2": {
+                "April": {
+                  "projected_revenue": 487500,
+                  "estimated_waste_kg": 34130
+                },
+                "May": {
+                  "projected_revenue": 492000,
+                  "estimated_waste_kg": 34440
+                },
+                "June": {
+                  "projected_revenue": 495000,
+                  "estimated_waste_kg": 34650
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "uni002",
+      "name": "City University Dining",
+      "type": "University Food Service",
+      "locations": [
+        {
+          "id": "cud001",
+          "name": "City University Central Cafeteria",
+          "address": "Campus Rd 77, 3000 Leuven",
+          "meals_per_day": 6000,
+          "historical_data": {
+            "2023": {
+              "Q4": {
+                "October": {
+                  "revenue": 727500,
+                  "food_waste_kg": 36380,
+                  "waste_factor": 0.005
+                },
+                "November": {
+                  "revenue": 738000,
+                  "food_waste_kg": 36900,
+                  "waste_factor": 0.005
+                },
+                "December": {
+                  "revenue": 517500,
+                  "food_waste_kg": 25880,
+                  "waste_factor": 0.005
+                }
+              }
+            },
+            "2024": {
+              "Q1": {
+                "January": {
+                  "revenue": 717000,
+                  "food_waste_kg": 35850,
+                  "waste_factor": 0.005
+                },
+                "February": {
+                  "revenue": 732000,
+                  "food_waste_kg": 36600,
+                  "waste_factor": 0.005
+                },
+                "March": {
+                  "revenue": 742500,
+                  "food_waste_kg": 37130,
+                  "waste_factor": 0.005
+                }
+              }
+            }
+          },
+          "running_average_waste_factor": 0.005,
+          "projected_data": {
+            "2024": {
+              "Q2": {
+                "April": {
+                  "projected_revenue": 735000,
+                  "estimated_waste_kg": 36750
+                },
+                "May": {
+                  "projected_revenue": 727500,
+                  "estimated_waste_kg": 36380
+                },
+                "June": {
+                  "projected_revenue": 480000,
+                  "estimated_waste_kg": 24000
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ff003",
+      "name": "Downtown Diner Group",
+      "type": "Chain Restaurant",
+      "locations": [
+        {
+          "id": "ddg001",
+          "name": "Downtown Diner - City Center",
+          "address": "Central Ave 12, 1000 Brussels",
+          "meals_per_day": 1500,
+          "historical_data": {
+            "2023": {
+              "Q4": {
+                "October": {
+                  "revenue": 300000,
+                  "food_waste_kg": 9000,
+                  "waste_factor": 0.003
+                },
+                "November": {
+                  "revenue": 310000,
+                  "food_waste_kg": 9500,
+                  "waste_factor": 0.003
+                },
+                "December": {
+                  "revenue": 350000,
+                  "food_waste_kg": 10500,
+                  "waste_factor": 0.003
+                }
+              }
+            },
+            "2024": {
+              "Q1": {
+                "January": {
+                  "revenue": 290000,
+                  "food_waste_kg": 8700,
+                  "waste_factor": 0.003
+                },
+                "February": {
+                  "revenue": 295000,
+                  "food_waste_kg": 8850,
+                  "waste_factor": 0.003
+                },
+                "March": {
+                  "revenue": 305000,
+                  "food_waste_kg": 9150,
+                  "waste_factor": 0.003
+                }
+              }
+            }
+          },
+          "running_average_waste_factor": 0.003,
+          "projected_data": {
+            "2024": {
+              "Q2": {
+                "April": {
+                  "projected_revenue": 315000,
+                  "estimated_waste_kg": 9450
+                },
+                "May": {
+                  "projected_revenue": 320000,
+                  "estimated_waste_kg": 9600
+                },
+                "June": {
+                  "projected_revenue": 330000,
+                  "estimated_waste_kg": 9900
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "hosp003",
+      "name": "Highland Hospital Cafeteria",
+      "type": "Hospital",
+      "locations": [
+        {
+          "id": "hhc001",
+          "name": "Highland Hospital Main Cafeteria",
+          "address": "Healing Way 15, 3000 Leuven",
+          "meals_per_day": 3500,
+          "historical_data": {
+            "2023": {
+              "Q4": {
+                "October": {
+                  "revenue": 400000,
+                  "food_waste_kg": 30000,
+                  "waste_factor": 0.0075
+                },
+                "November": {
+                  "revenue": 390000,
+                  "food_waste_kg": 29250,
+                  "waste_factor": 0.0075
+                },
+                "December": {
+                  "revenue": 410000,
+                  "food_waste_kg": 30750,
+                  "waste_factor": 0.0075
+                }
+              }
+            },
+            "2024": {
+              "Q1": {
+                "January": {
+                  "revenue": 405000,
+                  "food_waste_kg": 30380,
+                  "waste_factor": 0.0075
+                },
+                "February": {
+                  "revenue": 395000,
+                  "food_waste_kg": 29630,
+                  "waste_factor": 0.0075
+                },
+                "March": {
+                  "revenue": 400000,
+                  "food_waste_kg": 30000,
+                  "waste_factor": 0.0075
+                }
+              }
+            }
+          },
+          "running_average_waste_factor": 0.0075,
+          "projected_data": {
+            "2024": {
+              "Q2": {
+                "April": {
+                  "projected_revenue": 405000,
+                  "estimated_waste_kg": 30380
+                },
+                "May": {
+                  "projected_revenue": 410000,
+                  "estimated_waste_kg": 30750
+                },
+                "June": {
+                  "projected_revenue": 405000,
+                  "estimated_waste_kg": 30380
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "corp003",
+      "name": "TechCorp Food Hub",
+      "type": "Corporate Cafeteria",
+      "locations": [
+        {
+          "id": "tcfh001",
+          "name": "TechCorp Main Cafeteria",
+          "address": "Innovation Blvd 101, 1049 Brussels",
+          "meals_per_day": 2500,
+          "historical_data": {
+            "2023": {
+              "Q4": {
+                "October": {
+                  "revenue": 260000,
+                  "food_waste_kg": 13000,
+                  "waste_factor": 0.005
+                },
+                "November": {
+                  "revenue": 265000,
+                  "food_waste_kg": 13200,
+                  "waste_factor": 0.005
+                },
+                "December": {
+                  "revenue": 270000,
+                  "food_waste_kg": 13500,
+                  "waste_factor": 0.005
+                }
+              }
+            },
+            "2024": {
+              "Q1": {
+                "January": {
+                  "revenue": 262000,
+                  "food_waste_kg": 13100,
+                  "waste_factor": 0.005
+                },
+                "February": {
+                  "revenue": 268000,
+                  "food_waste_kg": 13400,
+                  "waste_factor": 0.005
+                },
+                "March": {
+                  "revenue": 275000,
+                  "food_waste_kg": 13750,
+                  "waste_factor": 0.005
+                }
+              }
+            }
+          },
+          "running_average_waste_factor": 0.005,
+          "projected_data": {
+            "2024": {
+              "Q2": {
+                "April": {
+                  "projected_revenue": 270000,
+                  "estimated_waste_kg": 13500
+                },
+                "May": {
+                  "projected_revenue": 275000,
+                  "estimated_waste_kg": 13750
+                },
+                "June": {
+                  "projected_revenue": 265000,
+                  "estimated_waste_kg": 13200
                 }
               }
             }
@@ -532,4 +964,4 @@
       ]
     }
   ]
-} 
+}

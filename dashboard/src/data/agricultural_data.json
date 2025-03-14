@@ -4,6 +4,8 @@
       "id": "fc001",
       "name": "AgroNutrients Plus",
       "location": "Antwerp, Belgium",
+      "cost_per_kg_eur": 0.18,
+      "max_food_waste_percentage": 40,
       "customers": [
         {
           "id": "f001",
@@ -276,6 +278,8 @@
       "id": "fc002",
       "name": "BelgianFert Solutions",
       "location": "Brussels, Belgium",
+      "cost_per_kg_eur": 0.22,
+      "max_food_waste_percentage": 45,
       "customers": [
         {
           "id": "f003",
@@ -381,6 +385,8 @@
       "id": "fc003",
       "name": "EcoFert Dynamics",
       "location": "Liège, Belgium",
+      "cost_per_kg_eur": 0.25,
+      "max_food_waste_percentage": 90,
       "customers": [
         {
           "id": "f004",
@@ -535,6 +541,8 @@
       "id": "fc004",
       "name": "GreenGrow Technologies",
       "location": "Ghent, Belgium",
+      "cost_per_kg_eur": 0.20,
+      "max_food_waste_percentage": 35,
       "customers": [
         {
           "id": "f005",
@@ -650,6 +658,8 @@
       "id": "fc005",
       "name": "SmartSoil Solutions",
       "location": "Hasselt, Belgium",
+      "cost_per_kg_eur": 0.23,
+      "max_food_waste_percentage": 30,
       "customers": [
         {
           "id": "f006",
@@ -765,6 +775,8 @@
       "id": "fc006",
       "name": "BioFert Innovations",
       "location": "Charleroi, Belgium",
+      "cost_per_kg_eur": 0.27,
+      "max_food_waste_percentage": 20,
       "customers": [
         {
           "id": "f007",
@@ -801,42 +813,6 @@
               }
             }
           ]
-        },
-        {
-          "id": "f019",
-          "name": "Antoine Leroy",
-          "farm_name": "Bio Innovation Farm",
-          "location": {
-            "city": "La Louvière",
-            "region": "Hainaut",
-            "coordinates": {"lat": 50.4833, "long": 4.1833}
-          },
-          "total_farm_size_hectares": 105,
-          "soil_composition": {
-            "ph_level": 6.7,
-            "organic_matter_percentage": 3.6,
-            "nitrogen_level_ppm": 51,
-            "phosphorus_level_ppm": 36,
-            "carbon_level_ppm": 190,
-            "texture": "clay loam",
-            "minerals": {
-              "calcium_ppm": 1700,
-              "magnesium_ppm": 220,
-              "sulfur_ppm": 17
-            }
-          },
-          "crops": [
-            {
-              "crop_name": "Organic Hemp",
-              "field_size_hectares": 40,
-              "planting_date": "2024-05-01",
-              "expected_harvest_date": "2024-09-30",
-              "soil_requirements": {
-                "ideal_ph": "6.0-7.5",
-                "nitrogen_needs_kg_per_hectare": 60
-              }
-            }
-          ]
         }
       ]
     },
@@ -844,6 +820,8 @@
       "id": "fc007",
       "name": "AgriTech Fertilizers",
       "location": "Kortrijk, Belgium",
+      "cost_per_kg_eur": 0.19,
+      "max_food_waste_percentage": 50,
       "customers": [
         {
           "id": "f008",
@@ -923,6 +901,8 @@
       "id": "fc008",
       "name": "FertilEarth Belgium",
       "location": "Mechelen, Belgium",
+      "cost_per_kg_eur": 0.24,
+      "max_food_waste_percentage": 50,
       "customers": [
         {
           "id": "f009",
@@ -955,7 +935,7 @@
               "expected_harvest_date": "2024-12-15",
               "soil_requirements": {
                 "ideal_ph": "6.0-6.8",
-                "nitrogen_needs_kg_per_hectare": 170
+                "nitrogen_needs_kg_per_hectare": 70
               }
             }
           ]
@@ -985,13 +965,13 @@
           },
           "crops": [
             {
-              "crop_name": "Sustainable Corn",
+              "crop_name": "Organic Hemp",
               "field_size_hectares": 35,
               "planting_date": "2024-04-15",
               "expected_harvest_date": "2024-10-15",
               "soil_requirements": {
                 "ideal_ph": "6.0-7.0",
-                "nitrogen_needs_kg_per_hectare": 150
+                "nitrogen_needs_kg_per_hectare": 40
               }
             }
           ]
