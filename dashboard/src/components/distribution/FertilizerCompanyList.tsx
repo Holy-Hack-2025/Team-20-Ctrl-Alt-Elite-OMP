@@ -120,17 +120,44 @@ const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
 
   // Function to export fertilizer requirements data
   const exportFertilizerData = () => {
+    // Get all unique fertilizer types across all companies
+    const allFertilizerTypes = new Set<string>();
+    summaries.forEach(company => {
+      Object.keys(company.fertilizerTotals).forEach(fertilizerType => {
+        allFertilizerTypes.add(fertilizerType);
+      });
+    });
+    const fertilizerTypes = Array.from(allFertilizerTypes).sort();
+
     // Create CSV headers
-    let csvContent = "Company Name,Fertilizer Type,Amount (kg)\n";
+    let csvContent = "Company Name";
+    fertilizerTypes.forEach(type => {
+      csvContent += `,${type} (kg)`;
+    });
+    csvContent += ",Total (kg)\n";
 
     // Add data for each company
     summaries.forEach(company => {
-      Object.entries(company.fertilizerTotals).forEach(([fertilizerName, amount]) => {
-        csvContent += `${company.companyName},${fertilizerName},${amount}\n`;
+      csvContent += `${company.companyName}`;
+      
+      // Add amount for each fertilizer type (0 if not used)
+      fertilizerTypes.forEach(type => {
+        const amount = company.fertilizerTotals[type] || 0;
+        csvContent += `,${amount}`;
       });
-      // Add total for each company
-      csvContent += `${company.companyName},Total,${company.totalAmount}\n\n`;
+      
+      // Add total
+      csvContent += `,${company.totalAmount}\n`;
     });
+
+    // Add totals row
+    csvContent += `Total`;
+    fertilizerTypes.forEach(type => {
+      const totalForType = summaries.reduce((sum, company) => sum + (company.fertilizerTotals[type] || 0), 0);
+      csvContent += `,${totalForType}`;
+    });
+    const grandTotal = summaries.reduce((sum, company) => sum + company.totalAmount, 0);
+    csvContent += `,${grandTotal}\n`;
 
     // Create and trigger download
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
@@ -142,6 +169,7 @@ const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   return (
