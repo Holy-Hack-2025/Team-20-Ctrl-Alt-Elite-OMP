@@ -90,6 +90,8 @@ export type FertilizerCompany = {
   customers: FarmerData[];
   waste_allocation_percentage?: number;
   monthly_capacity_kg?: number;
+  cost_per_kg_eur?: number;
+  max_food_waste_percentage?: number;
 };
 
 export type CropRecommendation = {
