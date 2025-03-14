@@ -1,0 +1,846 @@
+{
+  "fertilizer_companies": [
+    {
+      "id": "fc001",
+      "name": "AgroNutrients Plus",
+      "location": "Antwerp, Belgium",
+      "customers": [
+        {
+          "id": "f001",
+          "name": "Jan Vandenberg",
+          "farm_name": "Green Valley Farm",
+          "location": {
+            "city": "Ghent",
+            "region": "East Flanders",
+            "coordinates": {"lat": 51.0543, "long": 3.7174}
+          },
+          "total_farm_size_hectares": 85,
+          "soil_composition": {
+            "ph_level": 6.8,
+            "organic_matter_percentage": 3.2,
+            "nitrogen_level_ppm": 45,
+            "phosphorus_level_ppm": 28,
+            "potassium_level_ppm": 180,
+            "texture": "loamy",
+            "minerals": {
+              "calcium_ppm": 1500,
+              "magnesium_ppm": 200,
+              "sulfur_ppm": 15
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Winter Wheat",
+              "field_size_hectares": 30,
+              "planting_date": "2024-10-15",
+              "expected_harvest_date": "2025-07-20",
+              "soil_requirements": {
+                "ideal_ph": "6.5-7.0",
+                "nitrogen_needs_kg_per_hectare": 180
+              }
+            },
+            {
+              "crop_name": "Sugar Beets",
+              "field_size_hectares": 25,
+              "planting_date": "2024-03-20",
+              "expected_harvest_date": "2024-10-15",
+              "soil_requirements": {
+                "ideal_ph": "6.5-7.0",
+                "nitrogen_needs_kg_per_hectare": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "f002",
+          "name": "Marie Dubois",
+          "farm_name": "Sunset Fields",
+          "location": {
+            "city": "Bruges",
+            "region": "West Flanders",
+            "coordinates": {"lat": 51.2093, "long": 3.2247}
+          },
+          "total_farm_size_hectares": 65,
+          "soil_composition": {
+            "ph_level": 6.2,
+            "organic_matter_percentage": 2.8,
+            "nitrogen_level_ppm": 38,
+            "phosphorus_level_ppm": 32,
+            "potassium_level_ppm": 165,
+            "texture": "sandy loam",
+            "minerals": {
+              "calcium_ppm": 1200,
+              "magnesium_ppm": 180,
+              "sulfur_ppm": 12
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Maize",
+              "field_size_hectares": 35,
+              "planting_date": "2024-04-25",
+              "expected_harvest_date": "2024-10-10",
+              "soil_requirements": {
+                "ideal_ph": "6.0-7.0",
+                "nitrogen_needs_kg_per_hectare": 150
+              }
+            }
+          ]
+        },
+        {
+          "id": "f010",
+          "name": "Karel De Vries",
+          "farm_name": "Meadowbrook Farm",
+          "location": {
+            "city": "Lokeren",
+            "region": "East Flanders",
+            "coordinates": {"lat": 51.1083, "long": 3.9861}
+          },
+          "total_farm_size_hectares": 95,
+          "soil_composition": {
+            "ph_level": 6.6,
+            "organic_matter_percentage": 3.4,
+            "nitrogen_level_ppm": 47,
+            "phosphorus_level_ppm": 31,
+            "potassium_level_ppm": 185,
+            "texture": "clay loam",
+            "minerals": {
+              "calcium_ppm": 1550,
+              "magnesium_ppm": 205,
+              "sulfur_ppm": 16
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Pears",
+              "field_size_hectares": 25,
+              "planting_date": "2024-03-01",
+              "expected_harvest_date": "2024-09-30",
+              "soil_requirements": {
+                "ideal_ph": "6.0-7.0",
+                "nitrogen_needs_kg_per_hectare": 90
+              }
+            },
+            {
+              "crop_name": "Asparagus",
+              "field_size_hectares": 10,
+              "planting_date": "2024-03-15",
+              "expected_harvest_date": "2024-06-30",
+              "soil_requirements": {
+                "ideal_ph": "6.5-7.0",
+                "nitrogen_needs_kg_per_hectare": 150
+              }
+            }
+          ]
+        },
+        {
+          "id": "f011",
+          "name": "Luc Maertens",
+          "farm_name": "Riverside Fields",
+          "location": {
+            "city": "Dendermonde",
+            "region": "East Flanders",
+            "coordinates": {"lat": 51.0333, "long": 4.1000}
+          },
+          "total_farm_size_hectares": 70,
+          "soil_composition": {
+            "ph_level": 6.9,
+            "organic_matter_percentage": 3.1,
+            "nitrogen_level_ppm": 43,
+            "phosphorus_level_ppm": 29,
+            "potassium_level_ppm": 175,
+            "texture": "silty loam",
+            "minerals": {
+              "calcium_ppm": 1450,
+              "magnesium_ppm": 195,
+              "sulfur_ppm": 14
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Onions",
+              "field_size_hectares": 15,
+              "planting_date": "2024-03-20",
+              "expected_harvest_date": "2024-08-15",
+              "soil_requirements": {
+                "ideal_ph": "6.0-7.0",
+                "nitrogen_needs_kg_per_hectare": 110
+              }
+            },
+            {
+              "crop_name": "Leeks",
+              "field_size_hectares": 20,
+              "planting_date": "2024-04-01",
+              "expected_harvest_date": "2024-10-30",
+              "soil_requirements": {
+                "ideal_ph": "6.0-6.8",
+                "nitrogen_needs_kg_per_hectare": 120
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fc002",
+      "name": "BelgianFert Solutions",
+      "location": "Brussels, Belgium",
+      "customers": [
+        {
+          "id": "f003",
+          "name": "Lucas Peeters",
+          "farm_name": "Golden Meadows",
+          "location": {
+            "city": "Leuven",
+            "region": "Flemish Brabant",
+            "coordinates": {"lat": 50.8798, "long": 4.7005}
+          },
+          "total_farm_size_hectares": 95,
+          "soil_composition": {
+            "ph_level": 7.1,
+            "organic_matter_percentage": 3.5,
+            "nitrogen_level_ppm": 52,
+            "phosphorus_level_ppm": 35,
+            "potassium_level_ppm": 195,
+            "texture": "clay loam",
+            "minerals": {
+              "calcium_ppm": 1800,
+              "magnesium_ppm": 220,
+              "sulfur_ppm": 18
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Sugar Beets",
+              "field_size_hectares": 40,
+              "planting_date": "2024-03-15",
+              "expected_harvest_date": "2024-10-01",
+              "soil_requirements": {
+                "ideal_ph": "6.5-7.0",
+                "nitrogen_needs_kg_per_hectare": 120
+              }
+            }
+          ]
+        },
+        {
+          "id": "f012",
+          "name": "Sarah Willems",
+          "farm_name": "Green Pastures",
+          "location": {
+            "city": "Tienen",
+            "region": "Flemish Brabant",
+            "coordinates": {"lat": 50.8069, "long": 4.9399}
+          },
+          "total_farm_size_hectares": 85,
+          "soil_composition": {
+            "ph_level": 6.7,
+            "organic_matter_percentage": 3.3,
+            "nitrogen_level_ppm": 46,
+            "phosphorus_level_ppm": 32,
+            "potassium_level_ppm": 180,
+            "texture": "loamy",
+            "minerals": {
+              "calcium_ppm": 1600,
+              "magnesium_ppm": 210,
+              "sulfur_ppm": 15
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Chicory",
+              "field_size_hectares": 30,
+              "planting_date": "2024-04-15",
+              "expected_harvest_date": "2024-11-15",
+              "soil_requirements": {
+                "ideal_ph": "6.0-7.0",
+                "nitrogen_needs_kg_per_hectare": 140
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fc003",
+      "name": "EcoFert Dynamics",
+      "location": "Liège, Belgium",
+      "customers": [
+        {
+          "id": "f004",
+          "name": "Thomas Lambert",
+          "farm_name": "Riverside Organics",
+          "location": {
+            "city": "Namur",
+            "region": "Wallonia",
+            "coordinates": {"lat": 50.4667, "long": 4.8667}
+          },
+          "total_farm_size_hectares": 120,
+          "soil_composition": {
+            "ph_level": 6.9,
+            "organic_matter_percentage": 4.0,
+            "nitrogen_level_ppm": 55,
+            "phosphorus_level_ppm": 40,
+            "potassium_level_ppm": 210,
+            "texture": "silty clay",
+            "minerals": {
+              "calcium_ppm": 2000,
+              "magnesium_ppm": 250,
+              "sulfur_ppm": 20
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Organic Spelt",
+              "field_size_hectares": 45,
+              "planting_date": "2024-10-01",
+              "expected_harvest_date": "2025-07-15",
+              "soil_requirements": {
+                "ideal_ph": "6.0-7.0",
+                "nitrogen_needs_kg_per_hectare": 100
+              }
+            }
+          ]
+        },
+        {
+          "id": "f013",
+          "name": "Michel Dupont",
+          "farm_name": "Organic Valley",
+          "location": {
+            "city": "Verviers",
+            "region": "Liège",
+            "coordinates": {"lat": 50.5833, "long": 5.8667}
+          },
+          "total_farm_size_hectares": 88,
+          "soil_composition": {
+            "ph_level": 6.8,
+            "organic_matter_percentage": 3.6,
+            "nitrogen_level_ppm": 49,
+            "phosphorus_level_ppm": 34,
+            "potassium_level_ppm": 185,
+            "texture": "clay loam",
+            "minerals": {
+              "calcium_ppm": 1650,
+              "magnesium_ppm": 215,
+              "sulfur_ppm": 16
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Organic Rye",
+              "field_size_hectares": 35,
+              "planting_date": "2024-10-01",
+              "expected_harvest_date": "2025-07-15",
+              "soil_requirements": {
+                "ideal_ph": "5.8-6.8",
+                "nitrogen_needs_kg_per_hectare": 110
+              }
+            }
+          ]
+        },
+        {
+          "id": "f014",
+          "name": "Claire Laurent",
+          "farm_name": "Sunny Hills Farm",
+          "location": {
+            "city": "Huy",
+            "region": "Liège",
+            "coordinates": {"lat": 50.5186, "long": 5.2361}
+          },
+          "total_farm_size_hectares": 65,
+          "soil_composition": {
+            "ph_level": 6.5,
+            "organic_matter_percentage": 3.2,
+            "nitrogen_level_ppm": 44,
+            "phosphorus_level_ppm": 30,
+            "potassium_level_ppm": 170,
+            "texture": "loamy",
+            "minerals": {
+              "calcium_ppm": 1400,
+              "magnesium_ppm": 190,
+              "sulfur_ppm": 14
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Organic Quinoa",
+              "field_size_hectares": 20,
+              "planting_date": "2024-04-15",
+              "expected_harvest_date": "2024-09-15",
+              "soil_requirements": {
+                "ideal_ph": "6.0-7.5",
+                "nitrogen_needs_kg_per_hectare": 100
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fc004",
+      "name": "GreenGrow Technologies",
+      "location": "Ghent, Belgium",
+      "customers": [
+        {
+          "id": "f005",
+          "name": "Emma Verstraete",
+          "farm_name": "Coastal Plains Farm",
+          "location": {
+            "city": "Ostend",
+            "region": "West Flanders",
+            "coordinates": {"lat": 51.2289, "long": 2.9158}
+          },
+          "total_farm_size_hectares": 75,
+          "soil_composition": {
+            "ph_level": 6.4,
+            "organic_matter_percentage": 2.5,
+            "nitrogen_level_ppm": 35,
+            "phosphorus_level_ppm": 25,
+            "potassium_level_ppm": 150,
+            "texture": "sandy",
+            "minerals": {
+              "calcium_ppm": 1100,
+              "magnesium_ppm": 160,
+              "sulfur_ppm": 10
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Carrots",
+              "field_size_hectares": 20,
+              "planting_date": "2024-04-01",
+              "expected_harvest_date": "2024-08-15",
+              "soil_requirements": {
+                "ideal_ph": "6.0-6.8",
+                "nitrogen_needs_kg_per_hectare": 100
+              }
+            }
+          ]
+        },
+        {
+          "id": "f015",
+          "name": "Bart Vermeer",
+          "farm_name": "Tech Valley Farm",
+          "location": {
+            "city": "Aalst",
+            "region": "East Flanders",
+            "coordinates": {"lat": 50.9378, "long": 4.0409}
+          },
+          "total_farm_size_hectares": 92,
+          "soil_composition": {
+            "ph_level": 6.7,
+            "organic_matter_percentage": 3.3,
+            "nitrogen_level_ppm": 46,
+            "phosphorus_level_ppm": 32,
+            "potassium_level_ppm": 175,
+            "texture": "sandy loam",
+            "minerals": {
+              "calcium_ppm": 1500,
+              "magnesium_ppm": 200,
+              "sulfur_ppm": 15
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Greenhouse Peppers",
+              "field_size_hectares": 8,
+              "planting_date": "2024-02-15",
+              "expected_harvest_date": "2024-11-30",
+              "soil_requirements": {
+                "ideal_ph": "5.5-6.8",
+                "nitrogen_needs_kg_per_hectare": 180
+              }
+            }
+          ]
+        },
+        {
+          "id": "f016",
+          "name": "Eva De Smet",
+          "farm_name": "Future Fields",
+          "location": {
+            "city": "Evergem",
+            "region": "East Flanders",
+            "coordinates": {"lat": 51.1333, "long": 3.7000}
+          },
+          "total_farm_size_hectares": 78,
+          "soil_composition": {
+            "ph_level": 6.4,
+            "organic_matter_percentage": 3.0,
+            "nitrogen_level_ppm": 42,
+            "phosphorus_level_ppm": 29,
+            "potassium_level_ppm": 165,
+            "texture": "loamy",
+            "minerals": {
+              "calcium_ppm": 1350,
+              "magnesium_ppm": 185,
+              "sulfur_ppm": 13
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Greenhouse Cucumbers",
+              "field_size_hectares": 6,
+              "planting_date": "2024-03-01",
+              "expected_harvest_date": "2024-10-31",
+              "soil_requirements": {
+                "ideal_ph": "5.5-6.8",
+                "nitrogen_needs_kg_per_hectare": 160
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fc005",
+      "name": "SmartSoil Solutions",
+      "location": "Hasselt, Belgium",
+      "customers": [
+        {
+          "id": "f006",
+          "name": "Lucas Van Damme",
+          "farm_name": "Highland View Farm",
+          "location": {
+            "city": "Sint-Truiden",
+            "region": "Limburg",
+            "coordinates": {"lat": 50.8169, "long": 5.1865}
+          },
+          "total_farm_size_hectares": 110,
+          "soil_composition": {
+            "ph_level": 6.7,
+            "organic_matter_percentage": 3.3,
+            "nitrogen_level_ppm": 48,
+            "phosphorus_level_ppm": 33,
+            "potassium_level_ppm": 175,
+            "texture": "loamy",
+            "minerals": {
+              "calcium_ppm": 1600,
+              "magnesium_ppm": 210,
+              "sulfur_ppm": 16
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Apples",
+              "field_size_hectares": 15,
+              "planting_date": "2024-03-01",
+              "expected_harvest_date": "2024-09-30",
+              "soil_requirements": {
+                "ideal_ph": "6.0-7.0",
+                "nitrogen_needs_kg_per_hectare": 80
+              }
+            }
+          ]
+        },
+        {
+          "id": "f017",
+          "name": "Thomas Wouters",
+          "farm_name": "Digital Acres",
+          "location": {
+            "city": "Genk",
+            "region": "Limburg",
+            "coordinates": {"lat": 50.9666, "long": 5.5000}
+          },
+          "total_farm_size_hectares": 82,
+          "soil_composition": {
+            "ph_level": 6.6,
+            "organic_matter_percentage": 3.2,
+            "nitrogen_level_ppm": 45,
+            "phosphorus_level_ppm": 31,
+            "potassium_level_ppm": 175,
+            "texture": "sandy loam",
+            "minerals": {
+              "calcium_ppm": 1450,
+              "magnesium_ppm": 195,
+              "sulfur_ppm": 14
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Smart Wheat",
+              "field_size_hectares": 40,
+              "planting_date": "2024-10-10",
+              "expected_harvest_date": "2025-07-15",
+              "soil_requirements": {
+                "ideal_ph": "6.5-7.0",
+                "nitrogen_needs_kg_per_hectare": 180
+              }
+            }
+          ]
+        },
+        {
+          "id": "f018",
+          "name": "Lisa Peeters",
+          "farm_name": "IoT Farm Solutions",
+          "location": {
+            "city": "Tongeren",
+            "region": "Limburg",
+            "coordinates": {"lat": 50.7833, "long": 5.4667}
+          },
+          "total_farm_size_hectares": 95,
+          "soil_composition": {
+            "ph_level": 6.8,
+            "organic_matter_percentage": 3.4,
+            "nitrogen_level_ppm": 48,
+            "phosphorus_level_ppm": 33,
+            "potassium_level_ppm": 180,
+            "texture": "loamy",
+            "minerals": {
+              "calcium_ppm": 1550,
+              "magnesium_ppm": 205,
+              "sulfur_ppm": 15
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Precision Potatoes",
+              "field_size_hectares": 35,
+              "planting_date": "2024-04-01",
+              "expected_harvest_date": "2024-09-15",
+              "soil_requirements": {
+                "ideal_ph": "5.8-6.5",
+                "nitrogen_needs_kg_per_hectare": 200
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fc006",
+      "name": "BioFert Innovations",
+      "location": "Charleroi, Belgium",
+      "customers": [
+        {
+          "id": "f007",
+          "name": "Sophie Dubois",
+          "farm_name": "Valley View Organics",
+          "location": {
+            "city": "Mons",
+            "region": "Hainaut",
+            "coordinates": {"lat": 50.4542, "long": 3.9563}
+          },
+          "total_farm_size_hectares": 90,
+          "soil_composition": {
+            "ph_level": 6.6,
+            "organic_matter_percentage": 3.8,
+            "nitrogen_level_ppm": 50,
+            "phosphorus_level_ppm": 38,
+            "potassium_level_ppm": 190,
+            "texture": "clay loam",
+            "minerals": {
+              "calcium_ppm": 1700,
+              "magnesium_ppm": 230,
+              "sulfur_ppm": 17
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Organic Vegetables",
+              "field_size_hectares": 25,
+              "planting_date": "2024-04-15",
+              "expected_harvest_date": "2024-10-15",
+              "soil_requirements": {
+                "ideal_ph": "6.2-6.8",
+                "nitrogen_needs_kg_per_hectare": 130
+              }
+            }
+          ]
+        },
+        {
+          "id": "f019",
+          "name": "Antoine Leroy",
+          "farm_name": "Bio Innovation Farm",
+          "location": {
+            "city": "La Louvière",
+            "region": "Hainaut",
+            "coordinates": {"lat": 50.4833, "long": 4.1833}
+          },
+          "total_farm_size_hectares": 105,
+          "soil_composition": {
+            "ph_level": 6.7,
+            "organic_matter_percentage": 3.6,
+            "nitrogen_level_ppm": 51,
+            "phosphorus_level_ppm": 36,
+            "potassium_level_ppm": 190,
+            "texture": "clay loam",
+            "minerals": {
+              "calcium_ppm": 1700,
+              "magnesium_ppm": 220,
+              "sulfur_ppm": 17
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Organic Hemp",
+              "field_size_hectares": 40,
+              "planting_date": "2024-05-01",
+              "expected_harvest_date": "2024-09-30",
+              "soil_requirements": {
+                "ideal_ph": "6.0-7.5",
+                "nitrogen_needs_kg_per_hectare": 150
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fc007",
+      "name": "AgriTech Fertilizers",
+      "location": "Kortrijk, Belgium",
+      "customers": [
+        {
+          "id": "f008",
+          "name": "Pieter Janssens",
+          "farm_name": "Tech-Smart Farm",
+          "location": {
+            "city": "Roeselare",
+            "region": "West Flanders",
+            "coordinates": {"lat": 50.9447, "long": 3.1241}
+          },
+          "total_farm_size_hectares": 150,
+          "soil_composition": {
+            "ph_level": 6.5,
+            "organic_matter_percentage": 3.1,
+            "nitrogen_level_ppm": 45,
+            "phosphorus_level_ppm": 30,
+            "potassium_level_ppm": 170,
+            "texture": "sandy loam",
+            "minerals": {
+              "calcium_ppm": 1400,
+              "magnesium_ppm": 190,
+              "sulfur_ppm": 14
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Hydroponic Tomatoes",
+              "field_size_hectares": 5,
+              "planting_date": "2024-02-15",
+              "expected_harvest_date": "2024-11-30",
+              "soil_requirements": {
+                "ideal_ph": "5.5-6.5",
+                "nitrogen_needs_kg_per_hectare": 250
+              }
+            }
+          ]
+        },
+        {
+          "id": "f020",
+          "name": "David Van Hoof",
+          "farm_name": "Smart Harvest Farm",
+          "location": {
+            "city": "Waregem",
+            "region": "West Flanders",
+            "coordinates": {"lat": 50.8854, "long": 3.4224}
+          },
+          "total_farm_size_hectares": 88,
+          "soil_composition": {
+            "ph_level": 6.5,
+            "organic_matter_percentage": 3.1,
+            "nitrogen_level_ppm": 44,
+            "phosphorus_level_ppm": 30,
+            "potassium_level_ppm": 170,
+            "texture": "sandy loam",
+            "minerals": {
+              "calcium_ppm": 1400,
+              "magnesium_ppm": 190,
+              "sulfur_ppm": 14
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Smart Barley",
+              "field_size_hectares": 45,
+              "planting_date": "2024-03-01",
+              "expected_harvest_date": "2024-07-15",
+              "soil_requirements": {
+                "ideal_ph": "6.0-7.0",
+                "nitrogen_needs_kg_per_hectare": 110
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fc008",
+      "name": "FertilEarth Belgium",
+      "location": "Mechelen, Belgium",
+      "customers": [
+        {
+          "id": "f009",
+          "name": "Anna Vermeulen",
+          "farm_name": "Sustainable Acres",
+          "location": {
+            "city": "Turnhout",
+            "region": "Antwerp",
+            "coordinates": {"lat": 51.3216, "long": 4.9445}
+          },
+          "total_farm_size_hectares": 80,
+          "soil_composition": {
+            "ph_level": 6.3,
+            "organic_matter_percentage": 2.9,
+            "nitrogen_level_ppm": 40,
+            "phosphorus_level_ppm": 28,
+            "potassium_level_ppm": 160,
+            "texture": "sandy",
+            "minerals": {
+              "calcium_ppm": 1300,
+              "magnesium_ppm": 175,
+              "sulfur_ppm": 13
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Brussels Sprouts",
+              "field_size_hectares": 15,
+              "planting_date": "2024-05-01",
+              "expected_harvest_date": "2024-12-15",
+              "soil_requirements": {
+                "ideal_ph": "6.0-6.8",
+                "nitrogen_needs_kg_per_hectare": 170
+              }
+            }
+          ]
+        },
+        {
+          "id": "f021",
+          "name": "Julie Claes",
+          "farm_name": "Earth-Friendly Fields",
+          "location": {
+            "city": "Lier",
+            "region": "Antwerp",
+            "coordinates": {"lat": 51.1333, "long": 4.5667}
+          },
+          "total_farm_size_hectares": 72,
+          "soil_composition": {
+            "ph_level": 6.4,
+            "organic_matter_percentage": 3.0,
+            "nitrogen_level_ppm": 42,
+            "phosphorus_level_ppm": 29,
+            "potassium_level_ppm": 165,
+            "texture": "sandy loam",
+            "minerals": {
+              "calcium_ppm": 1350,
+              "magnesium_ppm": 185,
+              "sulfur_ppm": 13
+            }
+          },
+          "crops": [
+            {
+              "crop_name": "Sustainable Corn",
+              "field_size_hectares": 35,
+              "planting_date": "2024-04-15",
+              "expected_harvest_date": "2024-10-15",
+              "soil_requirements": {
+                "ideal_ph": "6.0-7.0",
+                "nitrogen_needs_kg_per_hectare": 150
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+} 
