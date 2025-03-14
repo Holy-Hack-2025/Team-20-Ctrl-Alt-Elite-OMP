@@ -1,0 +1,44 @@
+Date : 2025-03-14 12:50:40
+Directory : c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src
+Total : 10 files,  1080 codes, 75 comments, 82 blanks, all 1237 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| TypeScript JSX |          7 |        666 |         75 |         81 |        822 |
+| JSON           |          2 |        412 |          0 |          1 |        413 |
+| TypeScript     |          1 |          2 |          0 |          0 |          2 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                                                   | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                                      |         10 |      1,080 |         75 |         82 |      1,237 |
+| app                                                                                                                                                    |          2 |         68 |          3 |          1 |         72 |
+| app\distribution                                                                                                                                       |          1 |          2 |          0 |          0 |          2 |
+| app\grondtest                                                                                                                                          |          1 |         66 |          3 |          1 |         70 |
+| components                                                                                                                                             |          5 |        598 |         72 |         80 |        750 |
+| components (Files)                                                                                                                                     |          2 |        226 |         11 |         20 |        257 |
+| components\distribution                                                                                                                                |          3 |        372 |         61 |         60 |        493 |
+| data                                                                                                                                                   |          2 |        412 |          0 |          1 |        413 |
+| types                                                                                                                                                  |          1 |          2 |          0 |          0 |          2 |
++--------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                                                                               | language       | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\app\distribution\page.tsx                         | TypeScript JSX |          2 |          0 |          0 |          2 |
+| c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\app\grondtest\page.tsx                            | TypeScript JSX |         66 |          3 |          1 |         70 |
+| c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\components\FertilizerCard.tsx                     | TypeScript JSX |         51 |          5 |          6 |         62 |
+| c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\components\WasteStatusCard.tsx                    | TypeScript JSX |        175 |          6 |         14 |        195 |
+| c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\components\distribution\FertilizerCompanyList.tsx | TypeScript JSX |        343 |         54 |         49 |        446 |
+| c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\components\distribution\FoodServiceStats.tsx      | TypeScript JSX |        -25 |         -1 |         -1 |        -27 |
+| c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\components\distribution\FoodWasteAllocations.tsx  | TypeScript JSX |         54 |          8 |         12 |         74 |
+| c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\data\agricultural_data.json                       | JSON           |        -20 |          0 |          0 |        -20 |
+| c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\data\food_service_data.json                       | JSON           |        432 |          0 |          1 |        433 |
+| c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\types\agricultural.ts                             | TypeScript     |          2 |          0 |          0 |          2 |
+| Total                                                                                                                                                  |                |      1,080 |         75 |         82 |      1,237 |
++--------------------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+

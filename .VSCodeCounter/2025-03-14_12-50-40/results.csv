@@ -1,0 +1,25 @@
+"filename", "language", "TypeScript", "JSON", "TypeScript JSX", "CSS", "comment", "blank", "total"
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\app\distribution\page.tsx", "TypeScript JSX", 0, 0, 213, 0, 13, 23, 249
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\app\globals.css", "CSS", 0, 0, 0, 22, 0, 5, 27
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\app\grondtest\page.tsx", "TypeScript JSX", 0, 0, 333, 0, 21, 24, 378
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\app\layout.tsx", "TypeScript JSX", 0, 0, 30, 0, 0, 5, 35
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\app\page.tsx", "TypeScript JSX", 0, 0, 101, 0, 0, 3, 104
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\components\FertilizerCard.tsx", "TypeScript JSX", 0, 0, 110, 0, 5, 12, 127
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\components\Sidebar.tsx", "TypeScript JSX", 0, 0, 49, 0, 0, 1, 50
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\components\WasteStatusCard.tsx", "TypeScript JSX", 0, 0, 175, 0, 6, 14, 195
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\components\distribution\CropRecommendationCard.tsx", "TypeScript JSX", 0, 0, 101, 0, 10, 12, 123
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\components\distribution\FarmerDetails.tsx", "TypeScript JSX", 0, 0, 74, 0, 7, 11, 92
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\components\distribution\FarmerDistribution.tsx", "TypeScript JSX", 0, 0, 38, 0, 0, 4, 42
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\components\distribution\FertilizerCompanyList.tsx", "TypeScript JSX", 0, 0, 573, 0, 78, 84, 735
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\components\distribution\FoodServiceStats.tsx", "TypeScript JSX", 0, 0, 247, 0, 11, 18, 276
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\components\distribution\FoodWasteAllocations.tsx", "TypeScript JSX", 0, 0, 95, 0, 10, 16, 121
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\components\distribution\SoilCompositionPanel.tsx", "TypeScript JSX", 0, 0, 33, 0, 0, 3, 36
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\data\agricultural_data.json", "JSON", 0, 982, 0, 0, 0, 0, 982
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\data\crops.json", "JSON", 0, 49, 0, 0, 0, 0, 49
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\data\fertilizer_data.json", "JSON", 0, 200, 0, 0, 0, 0, 200
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\data\fertilizers.json", "JSON", 0, 42, 0, 0, 0, 0, 42
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\data\foodWasteMinerals.ts", "TypeScript", 38, 0, 0, 0, 1, 1, 40
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\data\food_service_data.json", "JSON", 0, 967, 0, 0, 0, 1, 968
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\types\agricultural.ts", "TypeScript", 99, 0, 0, 0, 4, 7, 110
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\utils\fertilizerUtils.ts", "TypeScript", 416, 0, 0, 0, 82, 90, 588
+"Total", "-", 553, 2240, 2172, 22, 248, 334, 5569

@@ -9,6 +9,7 @@ type FertilizerCompanyListProps = {
   setSelectedCompany: (id: string) => void;
   fertilizers: Fertilizer[];
   totalFoodWasteKg?: number; // Total available food waste in kg
+  defaultEstablishmentType?: string; // Default establishment type from food waste sources
 };
 
 // New type for storing waste allocation data
@@ -19,6 +20,7 @@ type WasteAllocation = {
   revenue_eur: number;
   cost_per_kg_eur: number;
   max_food_waste_percentage: number;
+  nutrientMatchScore?: number;
   nutrients?: {
     nitrogen_kg: number;
     phosphorus_kg: number;
@@ -69,24 +71,15 @@ export type FertilizerExportData = {
 export const calculateOptimalWasteAllocation = (
   companies: FertilizerCompany[], 
   totalFoodWasteKg: number = 10000, // Default to 10 tons if not specified
-  establishmentType: string = "default" // Default establishment type for nutrient content
+  establishmentType: string = "default", // Default establishment type for nutrient content
+  forceFullAllocation: boolean = false // Whether to force allocation of all waste
 ): WasteAllocation[] => {
-  // Sort companies by price they're willing to pay, highest first
-  const sortedCompanies = [...companies].sort((a, b) => 
-    (b.cost_per_kg_eur || 0) - (a.cost_per_kg_eur || 0)
-  );
-  
-  let remainingWaste = totalFoodWasteKg;
-  const allocations: WasteAllocation[] = [];
-  
   // Get nutrient content for this type of establishment
   const nutrientContent = nutrientContentByEstablishmentType[establishmentType] || 
                           nutrientContentByEstablishmentType["default"];
-
-  // First pass: assign to highest-paying companies first
-  for (const company of sortedCompanies) {
-    if (remainingWaste <= 0) break;
-    
+  
+  // First pass: calculate each company's fertilizer needs and nutrient requirements
+  const companyData = companies.map(company => {
     // Calculate fertilizer needs more accurately based on customer data
     const fertilizerNeeds = company.customers.reduce((sum, farmer) => {
       // If detailed crop data is available, use it for more precise calculation
@@ -106,8 +99,80 @@ export const calculateOptimalWasteAllocation = (
     const maxWastePercentage = company.max_food_waste_percentage ?? 0;
     const maxWaste = fertilizerNeeds * (maxWastePercentage / 100);
     
+    // Calculate nutrient match score - how well this waste source matches this company's needs
+    // Higher score means better match
+    let nutrientMatchScore = 1.0; // Default score
+    
+    // If we have detailed customer data with crops, calculate nutrient match
+    if (company.customers.some(farmer => farmer.crops && farmer.crops.length > 0)) {
+      const nutrientNeeds = {
+        nitrogen: 0,
+        phosphorus: 0,
+        carbon: 0,
+        lime: 0
+      };
+      
+      // Calculate total nutrient needs for this company
+      company.customers.forEach(farmer => {
+        if (farmer.crops) {
+          farmer.crops.forEach(crop => {
+            const area = crop.field_size_hectares;
+            
+            // Add nitrogen needs
+            nutrientNeeds.nitrogen += (crop.soil_requirements.nitrogen_needs_kg_per_hectare || 0) * area;
+            
+            // Add phosphorus needs if available
+            if (crop.soil_requirements.phosphorus_needs_kg_per_hectare) {
+              nutrientNeeds.phosphorus += crop.soil_requirements.phosphorus_needs_kg_per_hectare * area;
+            }
+            
+            // Add carbon needs if available
+            if (crop.soil_requirements.carbon_needs_kg_per_hectare) {
+              nutrientNeeds.carbon += crop.soil_requirements.carbon_needs_kg_per_hectare * area;
+            }
+          });
+        }
+      });
+      
+      // Calculate match score based on nutrient composition
+      // Higher score for better matches between waste nutrients and company needs
+      const nitrogenMatch = nutrientContent.nitrogen_kg > 0 ? 
+        Math.min(nutrientNeeds.nitrogen / (totalFoodWasteKg * nutrientContent.nitrogen_kg), 1) : 0;
+      
+      const phosphorusMatch = nutrientContent.phosphorus_kg > 0 && nutrientNeeds.phosphorus > 0 ? 
+        Math.min(nutrientNeeds.phosphorus / (totalFoodWasteKg * nutrientContent.phosphorus_kg), 1) : 0;
+      
+      const carbonMatch = nutrientContent.carbon_kg > 0 && nutrientNeeds.carbon > 0 ? 
+        Math.min(nutrientNeeds.carbon / (totalFoodWasteKg * nutrientContent.carbon_kg), 1) : 0;
+      
+      // Calculate weighted match score
+      nutrientMatchScore = (nitrogenMatch * 0.5) + (phosphorusMatch * 0.3) + (carbonMatch * 0.2) + 0.5;
+    }
+    
+    return {
+      company,
+      fertilizerNeeds,
+      maxWaste,
+      nutrientMatchScore,
+      // Economic value score combines price offered and nutrient match
+      economicValueScore: (company.cost_per_kg_eur || 0) * nutrientMatchScore
+    };
+  });
+  
+  // Sort by economic value score (price * nutrient match), highest first
+  const sortedCompanyData = [...companyData].sort((a, b) => 
+    b.economicValueScore - a.economicValueScore
+  );
+  
+  // Second pass: allocate waste based on economic value and maximum capacity
+  let remainingWaste = totalFoodWasteKg;
+  const allocations: WasteAllocation[] = [];
+  
+  for (const data of sortedCompanyData) {
+    if (remainingWaste <= 0) break;
+    
     // Allocate minimum of what's available and what company can accept
-    const allocation = Math.min(remainingWaste, maxWaste);
+    const allocation = Math.min(remainingWaste, data.maxWaste);
     
     // Calculate the nutrient content in this allocation
     const nutrientsInAllocation = {
@@ -118,16 +183,45 @@ export const calculateOptimalWasteAllocation = (
     };
     
     allocations.push({
-      companyId: company.id,
-      companyName: company.name,
+      companyId: data.company.id,
+      companyName: data.company.name,
       allocation_kg: allocation,
-      revenue_eur: allocation * (company.cost_per_kg_eur || 0),
-      cost_per_kg_eur: company.cost_per_kg_eur || 0,
-      max_food_waste_percentage: company.max_food_waste_percentage || 0,
-      nutrients: nutrientsInAllocation
+      revenue_eur: allocation * (data.company.cost_per_kg_eur || 0),
+      cost_per_kg_eur: data.company.cost_per_kg_eur || 0,
+      max_food_waste_percentage: data.company.max_food_waste_percentage || 0,
+      nutrients: nutrientsInAllocation,
+      nutrientMatchScore: data.nutrientMatchScore
     });
     
     remainingWaste -= allocation;
+  }
+  
+  // Third pass: if we need to force full allocation and there's still waste left,
+  // distribute remaining waste to all companies proportionally
+  if (forceFullAllocation && remainingWaste > 0 && allocations.length > 0) {
+    // Calculate total current allocation
+    const totalAllocated = allocations.reduce((sum, alloc) => sum + alloc.allocation_kg, 0);
+    
+    // Distribute remaining waste based on current allocation proportions
+    allocations.forEach(allocation => {
+      const proportion = allocation.allocation_kg / totalAllocated;
+      const additionalWaste = remainingWaste * proportion;
+      
+      // Update allocation with additional waste
+      allocation.allocation_kg += additionalWaste;
+      allocation.revenue_eur += additionalWaste * allocation.cost_per_kg_eur;
+      
+      // Update nutrient content
+      if (allocation.nutrients) {
+        allocation.nutrients.nitrogen_kg += additionalWaste * nutrientContent.nitrogen_kg;
+        allocation.nutrients.phosphorus_kg += additionalWaste * nutrientContent.phosphorus_kg;
+        allocation.nutrients.carbon_kg += additionalWaste * nutrientContent.carbon_kg;
+        allocation.nutrients.lime_kg += additionalWaste * nutrientContent.lime_kg;
+      }
+    });
+    
+    // All waste is now allocated
+    remainingWaste = 0;
   }
   
   // Calculate allocation percentages based on total available food waste, not just what was allocated
@@ -223,6 +317,7 @@ const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
   setSelectedCompany,
   fertilizers,
   totalFoodWasteKg = 10000, // Default to 10 tons if not specified
+  defaultEstablishmentType = "default"
 }) => {
   // State to store fertilizer recommendations
   const [recommendations, setRecommendations] = useState<FertilizerRecommendations[]>([]);
@@ -233,21 +328,29 @@ const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
   // State to store total revenue
   const [totalRevenue, setTotalRevenue] = useState<number>(0);
   // Add state for establishment type
-  const [establishmentType, setEstablishmentType] = useState<string>("default");
+  const [establishmentType, setEstablishmentType] = useState<string>(defaultEstablishmentType);
+  // Add state for force full allocation
+  const [forceFullAllocation, setForceFullAllocation] = useState<boolean>(false);
+
+  // Update establishment type when defaultEstablishmentType changes
+  useEffect(() => {
+    setEstablishmentType(defaultEstablishmentType);
+  }, [defaultEstablishmentType]);
 
   // Calculate allocations when component mounts or companies/total waste changes
   useEffect(() => {
     const allocations = calculateOptimalWasteAllocation(
       fertilizerCompanies, 
       totalFoodWasteKg,
-      establishmentType
+      establishmentType,
+      forceFullAllocation
     );
     setWasteAllocations(allocations);
     
     // Calculate total revenue
     const revenue = allocations.reduce((sum, alloc) => sum + alloc.revenue_eur, 0);
     setTotalRevenue(revenue);
-  }, [fertilizerCompanies, totalFoodWasteKg, establishmentType]);
+  }, [fertilizerCompanies, totalFoodWasteKg, establishmentType, forceFullAllocation]);
 
   // Calculate recommendations when companies change
   useEffect(() => {
@@ -347,19 +450,20 @@ const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
 
   // Export waste allocation data to CSV
   const exportWasteAllocationData = () => {
-    const headers = ['Company Name', 'Allocation (kg)', 'Allocation (%)', 'Revenue (EUR)', 'Cost per kg (EUR)', 'Max Waste %'];
+    const headers = ['Company Name', 'Allocation (kg)', 'Allocation (%)', 'Nutrient Match (%)', 'Revenue (EUR)', 'Cost per kg (EUR)', 'Max Waste %'];
     let csvContent = headers.join(',') + '\n';
 
     // Add company rows
     wasteAllocations.forEach(allocation => {
       const allocationPercentage = ((allocation.allocation_kg / totalFoodWasteKg) * 100).toFixed(1);
-      csvContent += `${allocation.companyName},${allocation.allocation_kg.toFixed(2)},${allocationPercentage}%,${allocation.revenue_eur.toFixed(2)},${allocation.cost_per_kg_eur.toFixed(2)},${allocation.max_food_waste_percentage}\n`;
+      const nutrientMatch = allocation.nutrientMatchScore ? (allocation.nutrientMatchScore * 100).toFixed(0) : 'N/A';
+      csvContent += `${allocation.companyName},${allocation.allocation_kg.toFixed(2)},${allocationPercentage}%,${nutrientMatch}%,${allocation.revenue_eur.toFixed(2)},${allocation.cost_per_kg_eur.toFixed(2)},${allocation.max_food_waste_percentage}\n`;
     });
 
     // Add total row
     const totalAllocation = wasteAllocations.reduce((sum, alloc) => sum + alloc.allocation_kg, 0);
     const totalAllocationPercentage = ((totalAllocation / totalFoodWasteKg) * 100).toFixed(1);
-    csvContent += `Total,${totalAllocation.toFixed(2)},${totalAllocationPercentage}%,${totalRevenue.toFixed(2)},,\n`;
+    csvContent += `Total,${totalAllocation.toFixed(2)},${totalAllocationPercentage}%,,${totalRevenue.toFixed(2)},,\n`;
 
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
@@ -376,6 +480,11 @@ const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
   // Add establishment type selector
   const handleEstablishmentTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setEstablishmentType(e.target.value);
+  };
+
+  // Add handler for force full allocation toggle
+  const handleForceFullAllocationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForceFullAllocation(e.target.checked);
   };
 
   return (
@@ -398,31 +507,58 @@ const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
         </div>
       </div>
       
-      {/* Add establishment type selector */}
-      <div className="mb-4">
-        <label htmlFor="establishmentType" className="block text-sm font-medium text-gray-700 mb-1">
-          Food Waste Source Type
-        </label>
-        <select
-          id="establishmentType"
-          value={establishmentType}
-          onChange={handleEstablishmentTypeChange}
-          className="w-full p-2 border border-gray-300 rounded-md"
-        >
-          <option value="default">Default</option>
-          <option value="Restaurant">Restaurant</option>
-          <option value="Hospital">Hospital</option>
-          <option value="School">School</option>
-          <option value="Hotel">Hotel</option>
-        </select>
+      {/* Controls for waste allocation settings */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        {/* Establishment type selector */}
+        <div>
+          <label htmlFor="establishmentType" className="block text-sm font-medium text-gray-700 mb-1">
+            Food Waste Source Type
+          </label>
+          <select
+            id="establishmentType"
+            value={establishmentType}
+            onChange={handleEstablishmentTypeChange}
+            className="w-full p-2 border border-gray-300 rounded-md"
+          >
+            <option value="default">Default</option>
+            <option value="Restaurant">Restaurant</option>
+            <option value="Hospital">Hospital</option>
+            <option value="School">School</option>
+            <option value="Hotel">Hotel</option>
+          </select>
+        </div>
+        
+        {/* Force full allocation toggle */}
+        <div className="flex items-center h-full pt-5">
+          <label className="inline-flex items-center cursor-pointer">
+            <input 
+              type="checkbox" 
+              value="" 
+              className="sr-only peer" 
+              checked={forceFullAllocation}
+              onChange={handleForceFullAllocationChange}
+            />
+            <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            <span className="ms-3 text-sm font-medium text-gray-700">Force Full Allocation</span>
+          </label>
+          <div className="ml-2 text-gray-500 cursor-help" title="When enabled, all available waste will be allocated to companies, even exceeding their preferred limits if necessary.">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+        </div>
       </div>
       
       {/* Display total waste and revenue information */}
       <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <h4 className="text-sm font-medium text-gray-600">Total Food Waste</h4>
             <p className="text-xl font-bold text-blue-700">{totalFoodWasteKg.toLocaleString()} kg</p>
+          </div>
+          <div>
+            <h4 className="text-sm font-medium text-gray-600">Primary Source Type</h4>
+            <p className="text-xl font-bold text-blue-700">{establishmentType}</p>
           </div>
           <div>
             <h4 className="text-sm font-medium text-gray-600">Total Revenue</h4>
@@ -453,8 +589,13 @@ const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
                   const unallocated = totalFoodWasteKg - totalAllocated;
                   const unallocatedPercentage = Math.round((unallocated / totalFoodWasteKg) * 100);
                   return (
-                    <p className="text-md font-bold text-orange-600">
+                    <p className={`text-md font-bold ${unallocated > 0 ? 'text-orange-600' : 'text-green-600'}`}>
                       {unallocated.toLocaleString()} kg ({unallocatedPercentage}%)
+                      {unallocated > 0 && !forceFullAllocation && (
+                        <span className="text-xs ml-2 text-gray-500">
+                          (Enable "Force Full Allocation" to use all waste)
+                        </span>
+                      )}
                     </p>
                   );
                 })()}
@@ -498,6 +639,13 @@ const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
                       <p className="text-xs font-medium text-green-600">
                         €{wasteAllocation.revenue_eur.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} revenue
                       </p>
+                      {wasteAllocation.nutrientMatchScore && (
+                        <p className="text-xs mt-1">
+                          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">
+                            {(wasteAllocation.nutrientMatchScore * 100).toFixed(0)}% nutrient match
+                          </span>
+                        </p>
+                      )}
                     </div>
                   )}
                 </div>

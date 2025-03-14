@@ -1,0 +1,12 @@
+"filename", "language", "TypeScript", "JSON", "TypeScript JSX", "comment", "blank", "total"
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\app\distribution\page.tsx", "TypeScript JSX", 0, 0, 2, 0, 0, 2
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\app\grondtest\page.tsx", "TypeScript JSX", 0, 0, 66, 3, 1, 70
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\components\FertilizerCard.tsx", "TypeScript JSX", 0, 0, 51, 5, 6, 62
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\components\WasteStatusCard.tsx", "TypeScript JSX", 0, 0, 175, 6, 14, 195
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\components\distribution\FertilizerCompanyList.tsx", "TypeScript JSX", 0, 0, 343, 54, 49, 446
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\components\distribution\FoodServiceStats.tsx", "TypeScript JSX", 0, 0, -25, -1, -1, -27
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\components\distribution\FoodWasteAllocations.tsx", "TypeScript JSX", 0, 0, 54, 8, 12, 74
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\data\agricultural_data.json", "JSON", 0, -20, 0, 0, 0, -20
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\data\food_service_data.json", "JSON", 0, 432, 0, 0, 1, 433
+"c:\Users\matia\OneDrive - KU Leuven\Documents\holy_hack_aft\Team-20-Ctrl-Alt-Elite-OMP\dashboard\src\types\agricultural.ts", "TypeScript", 2, 0, 0, 0, 0, 2
+"Total", "-", 2, 412, 666, 75, 82, 1237

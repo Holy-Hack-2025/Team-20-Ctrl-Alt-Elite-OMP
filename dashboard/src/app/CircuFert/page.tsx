@@ -3,31 +3,14 @@
 import { useState, useEffect } from "react";
 import FertilizerCard from "@/components/FertilizerCard";
 import Sidebar from "@/components/Sidebar";
+import { Fertilizer, FertilizerCompany } from '@/types/agricultural';
+import fertilizerData from '../../data/fertilizer_data.json';
+import agriculturalData from '../../data/agricultural_data.json';
 
 // Define types for our fertilizer data
 type FertilizerComponent = {
   name: string;
   percentage: number;
-};
-
-type Fertilizer = {
-  id: number;
-  title: string;
-  baseAmount: number;
-  predictedIncrease: string;
-  components: FertilizerComponent[];
-  targetCrops: string[];
-};
-
-type FertilizerCompany = {
-  id: string;
-  name: string;
-  location: string;
-  customers: any[];
-  waste_allocation_percentage: number;
-  monthly_capacity_kg: number;
-  cost_per_kg_eur?: number;
-  max_food_waste_percentage?: number;
 };
 
 export default function PredictionDashboard() {
@@ -38,49 +21,33 @@ export default function PredictionDashboard() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Fetch fertilizer and company data
+  // Load fertilizer and company data
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoading(true);
-        setError(null);
-        
-        // Fetch fertilizer data
-        const fertilizerResponse = await fetch('/data/fertilizer_data.json');
-        if (!fertilizerResponse.ok) {
-          throw new Error(`HTTP error! status: ${fertilizerResponse.status}`);
-        }
-        const fertilizerData = await fertilizerResponse.json();
-        setFertilizers(fertilizerData.fertilizers);
+    try {
+      setIsLoading(true);
+      setError(null);
+      
+      // Set fertilizer data directly from import
+      setFertilizers(fertilizerData.fertilizers);
 
-        // Fetch agricultural data (companies)
-        const agriculturalResponse = await fetch('/data/agricultural_data.json');
-        if (!agriculturalResponse.ok) {
-          throw new Error(`HTTP error! status: ${agriculturalResponse.status}`);
-        }
-        const agriculturalData = await agriculturalResponse.json();
-        
-        // Process companies data
-        const processedCompanies = agriculturalData.fertilizer_companies.map((company: any) => ({
-          ...company,
-          waste_allocation_percentage: 100 / agriculturalData.fertilizer_companies.length,
-          monthly_capacity_kg: company.customers.length * 5000
-        }));
-        
-        setCompanies(processedCompanies);
-        // Set first company as default selection
-        if (processedCompanies.length > 0) {
-          setSelectedCompany(processedCompanies[0].id);
-        }
-      } catch (error) {
-        console.error('Error loading data:', error);
-        setError('Failed to load data. Please try again later.');
-      } finally {
-        setIsLoading(false);
+      // Process companies data
+      const processedCompanies = agriculturalData.fertilizer_companies.map((company: any) => ({
+        ...company,
+        waste_allocation_percentage: 100 / agriculturalData.fertilizer_companies.length,
+        monthly_capacity_kg: company.customers.length * 5000
+      }));
+      
+      setCompanies(processedCompanies);
+      // Set first company as default selection
+      if (processedCompanies.length > 0) {
+        setSelectedCompany(processedCompanies[0].id);
       }
-    };
-
-    fetchData();
+    } catch (error) {
+      console.error('Error loading data:', error);
+      setError('Failed to load data. Please try again later.');
+    } finally {
+      setIsLoading(false);
+    }
   }, []);
 
   // Format large numbers with commas
@@ -89,7 +56,16 @@ export default function PredictionDashboard() {
   };
 
   // Get selected company data
-  const selectedCompanyData = companies.find(company => company.id === selectedCompany);
+  const selectedCompanyData = companies.find(company => company.id === selectedCompany) || {
+    id: '',
+    name: '',
+    location: '',
+    customers: [],
+    waste_allocation_percentage: 0,
+    monthly_capacity_kg: 0,
+    cost_per_kg_eur: 0,
+    max_food_waste_percentage: 0
+  };
 
   return (
     <div className="flex h-screen bg-gray-50">
@@ -147,17 +123,18 @@ export default function PredictionDashboard() {
                   <h2 className="text-xl font-bold text-gray-800">Company Allocation Overview</h2>
                   <p className="text-sm text-gray-600 mt-1">Current waste allocation and capacity utilization for {selectedCompanyData.name}</p>
                 </div>
-                <div className="p-5 grid grid-cols-1 md:grid-cols-3 gap-5">
+                
+                <div className="p-5">
                   <div className="bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-100">
                     <h3 className="text-md font-semibold text-gray-700 mb-3">Waste Allocation</h3>
                     <div className="space-y-2">
                       <div className="flex justify-between items-center">
                         <span className="text-sm text-gray-600">Current Allocation</span>
-                        <span className="text-lg font-bold text-blue-600">{selectedCompanyData.waste_allocation_percentage.toFixed(1)}%</span>
+                        <span className="text-lg font-bold text-blue-600">{(selectedCompanyData.waste_allocation_percentage || 0).toFixed(1)}%</span>
                       </div>
                       <div className="flex justify-between items-center">
                         <span className="text-sm text-gray-600">Monthly Capacity</span>
-                        <span className="text-lg font-bold text-green-600">{formatNumber(selectedCompanyData.monthly_capacity_kg)} kg</span>
+                        <span className="text-lg font-bold text-green-600">{formatNumber(selectedCompanyData.monthly_capacity_kg || 0)} kg</span>
                       </div>
                     </div>
                   </div>
