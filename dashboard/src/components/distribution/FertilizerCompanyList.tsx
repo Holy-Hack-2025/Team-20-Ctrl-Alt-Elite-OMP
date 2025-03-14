@@ -378,35 +378,6 @@ const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
     URL.revokeObjectURL(url);
   };
 
-  // Export waste allocation data to CSV
-  const exportWasteAllocationData = () => {
-    const headers = ['Company Name', 'Allocation (kg)', 'Allocation (%)', 'Nutrient Match (%)', 'Revenue (EUR)', 'Cost per kg (EUR)', 'Max Waste %'];
-    let csvContent = headers.join(',') + '\n';
-
-    // Add company rows
-    wasteAllocations.forEach(allocation => {
-      const allocationPercentage = ((allocation.allocation_kg / totalFoodWasteKg) * 100).toFixed(1);
-      const nutrientMatch = allocation.nutrientMatchScore ? (allocation.nutrientMatchScore * 100).toFixed(0) : 'N/A';
-      csvContent += `${allocation.companyName},${allocation.allocation_kg.toFixed(2)},${allocationPercentage}%,${nutrientMatch}%,${allocation.revenue_eur.toFixed(2)},${allocation.cost_per_kg_eur.toFixed(2)},${allocation.max_food_waste_percentage}\n`;
-    });
-
-    // Add total row
-    const totalAllocation = wasteAllocations.reduce((sum, alloc) => sum + alloc.allocation_kg, 0);
-    const totalAllocationPercentage = ((totalAllocation / totalFoodWasteKg) * 100).toFixed(1);
-    csvContent += `Total,${totalAllocation.toFixed(2)},${totalAllocationPercentage}%,,${totalRevenue.toFixed(2)},,\n`;
-
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    const link = document.createElement('a');
-    const url = URL.createObjectURL(blob);
-    link.setAttribute('href', url);
-    link.setAttribute('download', 'waste_allocation.csv');
-    link.style.visibility = 'hidden';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
-
   // Add establishment type selector
   const handleEstablishmentTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setEstablishmentType(e.target.value);
@@ -428,142 +399,6 @@ const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
           >
             Export Requirements
           </button>
-          <button
-            onClick={exportWasteAllocationData}
-            className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors duration-200"
-          >
-            Export Allocations
-          </button>
-        </div>
-      </div>
-      
-      {/* Controls for waste allocation settings */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        {/* Establishment type selector */}
-        <div>
-          <label htmlFor="establishmentType" className="block text-sm font-medium text-gray-700 mb-1">
-            Food Waste Source Type
-          </label>
-          <select
-            id="establishmentType"
-            value={establishmentType}
-            onChange={handleEstablishmentTypeChange}
-            className="w-full p-2 border border-gray-300 rounded-md"
-          >
-            <option value="default">Default</option>
-            <option value="Restaurant">Restaurant</option>
-            <option value="Hospital">Hospital</option>
-            <option value="School">School</option>
-            <option value="Hotel">Hotel</option>
-          </select>
-        </div>
-        
-        {/* Force full allocation toggle */}
-        <div className="flex items-center h-full pt-5">
-          <label className="inline-flex items-center cursor-pointer">
-            <input 
-              type="checkbox" 
-              value="" 
-              className="sr-only peer" 
-              checked={forceFullAllocation}
-              onChange={handleForceFullAllocationChange}
-            />
-            <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-            <span className="ms-3 text-sm font-medium text-gray-700">Force Full Allocation</span>
-          </label>
-          <div className="ml-2 text-gray-500 cursor-help" title="When enabled, all available waste will be allocated to companies, even exceeding their preferred limits if necessary.">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-        </div>
-      </div>
-      
-      {/* Display total waste and revenue information */}
-      <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
-            <h4 className="text-sm font-medium text-gray-600">Total Food Waste</h4>
-            <p className="text-xl font-bold text-blue-700">{totalFoodWasteKg?.toLocaleString() || 0} kg</p>
-          </div>
-          <div>
-            <h4 className="text-sm font-medium text-gray-600">Primary Source Type</h4>
-            <p className="text-xl font-bold text-blue-700">{establishmentType}</p>
-          </div>
-          <div>
-            <h4 className="text-sm font-medium text-gray-600">Total Revenue</h4>
-            <p className="text-xl font-bold text-green-700">€{totalRevenue.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</p>
-          </div>
-        </div>
-
-        {/* Add allocation summary */}
-        <div className="mt-4 pt-4 border-t border-blue-200">
-          <h4 className="text-sm font-medium text-gray-600 mb-3">Food Waste Allocation</h4>
-          <div className="relative h-6 bg-gray-200 rounded-full overflow-hidden">
-            {wasteAllocations.map((allocation, index) => {
-              const percentage = (allocation.allocation_kg / (totalFoodWasteKg || 1)) * 100;
-              const colors = [
-                'bg-blue-500',
-                'bg-green-500',
-                'bg-yellow-500',
-                'bg-purple-500',
-                'bg-red-500',
-                'bg-indigo-500'
-              ];
-              return (
-                <div
-                  key={allocation.companyId}
-                  className={`absolute h-full ${colors[index % colors.length]} transition-all duration-300`}
-                  style={{
-                    left: `${wasteAllocations.slice(0, index).reduce((sum, a) => 
-                      sum + (a.allocation_kg / (totalFoodWasteKg || 1)) * 100, 0)}%`,
-                    width: `${percentage}%`
-                  }}
-                  title={`${allocation.companyName}: ${allocation.allocation_kg.toLocaleString()} kg (${percentage.toFixed(1)}%)`}
-                />
-              );
-            })}
-          </div>
-          <div className="mt-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-            {wasteAllocations.map((allocation, index) => {
-              const percentage = (allocation.allocation_kg / (totalFoodWasteKg || 1)) * 100;
-              const colors = [
-                'bg-blue-500',
-                'bg-green-500',
-                'bg-yellow-500',
-                'bg-purple-500',
-                'bg-red-500',
-                'bg-indigo-500'
-              ];
-              return (
-                <div key={allocation.companyId} className="flex items-center text-sm">
-                  <div className={`w-3 h-3 rounded-full ${colors[index % colors.length]} mr-2`} />
-                  <span className="text-gray-600 truncate">{allocation.companyName}:</span>
-                  <span className="ml-1 font-medium">{percentage.toFixed(1)}%</span>
-                </div>
-              );
-            })}
-          </div>
-          {/* Add unallocated waste if any */}
-          {(() => {
-            const totalAllocated = wasteAllocations.reduce((sum, alloc) => sum + alloc.allocation_kg, 0);
-            const unallocated = (totalFoodWasteKg || 0) - totalAllocated;
-            if (unallocated > 0) {
-              const unallocatedPercentage = (unallocated / (totalFoodWasteKg || 1)) * 100;
-              return (
-                <div className="mt-2 text-sm text-orange-600">
-                  <span className="font-medium">Unallocated: </span>
-                  {unallocated.toLocaleString()} kg ({unallocatedPercentage.toFixed(1)}%)
-                  {!forceFullAllocation && (
-                    <span className="text-gray-500 ml-2">
-                      (Enable "Force Full Allocation" to distribute remaining waste)
-                    </span>
-                  )}
-                </div>
-              );
-            }
-            return null;
-          })()}
         </div>
       </div>
       
@@ -592,22 +427,15 @@ const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
                   </div>
                 </div>
                 <div className="text-right">
-                  <span className="text-sm font-medium text-blue-600">
-                    {company.waste_allocation_percentage}% of Total Waste
-                  </span>
                   {wasteAllocation && (
                     <div className="mt-1">
                       <div className="flex items-center justify-end">
-                        <p className="text-xs text-gray-600">{wasteAllocation.allocation_kg.toLocaleString()} kg allocated</p>
                         {wasteAllocation.isOverMaxLimit && (
                           <span className="ml-2 px-2 py-0.5 bg-red-100 text-red-800 text-xs font-medium rounded">
                             Exceeds Limit
                           </span>
                         )}
                       </div>
-                      <p className="text-xs font-medium text-green-600">
-                        €{wasteAllocation.revenue_eur.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})} revenue
-                      </p>
                       {wasteAllocation.isOverMaxLimit && (
                         <p className="text-xs text-red-600 mt-1">
                           Max allowed: {wasteAllocation.maxAllowedKg.toLocaleString()} kg
