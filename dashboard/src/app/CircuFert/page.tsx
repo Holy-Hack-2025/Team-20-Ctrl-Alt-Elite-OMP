@@ -8,9 +8,6 @@ import Sidebar from "@/components/Sidebar";
 type FertilizerComponent = {
   name: string;
   percentage: number;
-  trend: 'up' | 'down' | 'stable';
-  soilTarget: number;
-  currentLevel: number;
 };
 
 type Fertilizer = {

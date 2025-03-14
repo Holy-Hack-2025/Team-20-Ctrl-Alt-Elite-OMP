@@ -11,9 +11,6 @@ type Metric = {
 type FertilizerComponent = {
   name: string;
   percentage: number;
-  trend: 'up' | 'down' | 'stable';
-  soilTarget: number;
-  currentLevel: number;
 };
 
 type FertilizerCardProps = {
@@ -100,20 +97,10 @@ export default function FertilizerCard({
                 
                 {/* Tooltip for more details - shown on hover */}
                 {hoveredComponent === idx && (
-                  <div className="absolute z-10 mt-1 w-full bg-white border border-gray-200 rounded-md shadow-lg p-2 text-xs">
-                    <div className="grid grid-cols-2 gap-1">
-                      <div>
-                        <span className="text-gray-500">Amount:</span>
-                        <span className="ml-1 font-medium">{calculateAmount(comp.percentage, totalAmount)}</span>
-                      </div>
-                      <div>
-                        <span className="text-gray-500">Target:</span>
-                        <span className="ml-1 font-medium">{comp.soilTarget} ppm</span>
-                      </div>
-                      <div>
-                        <span className="text-gray-500">Current:</span>
-                        <span className="ml-1 font-medium">{comp.currentLevel} ppm</span>
-                      </div>
+                  <div className="absolute z-10 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-lg p-2 text-xs">
+                    <div>
+                      <span className="text-gray-500">Amount:</span>
+                      <span className="ml-1 font-medium">{calculateAmount(comp.percentage, totalAmount)}</span>
                     </div>
                   </div>
                 )}

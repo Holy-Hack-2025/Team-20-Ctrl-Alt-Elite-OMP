@@ -9,34 +9,9 @@ import agriculturalData from '../../data/agricultural_data.json';
 import fertilizerData from '../../data/fertilizer_data.json';
 import FoodServiceStats from '@/components/distribution/FoodServiceStats';
 import FoodWasteAllocations from '@/components/distribution/FoodWasteAllocations';
+import { FertilizerComponent, Fertilizer, FertilizerCompany } from '@/types/agricultural';
 
 // Define these types locally since they conflict with the imports
-type FertilizerComponent = {
-  name: string;
-  percentage: number;
-  trend: string;
-  soilTarget: number;
-  currentLevel: number;
-};
-
-type Fertilizer = {
-  id: number;
-  title: string;
-  baseAmount: number;
-  predictedIncrease: string;
-  components: FertilizerComponent[];
-  targetCrops: string[];
-};
-
-type FertilizerCompany = {
-  id: string;
-  name: string;
-  location: string;
-  customers: FarmerData[];
-  waste_allocation_percentage?: number;
-  monthly_capacity_kg?: number;
-};
-
 type HistoricalData = {
   revenue: number;
   food_waste_kg: number;

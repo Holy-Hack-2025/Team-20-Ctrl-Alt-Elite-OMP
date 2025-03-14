@@ -68,9 +68,6 @@ export type FarmerData = {
 export type FertilizerComponent = {
   name: string;
   percentage: number;
-  trend: string;
-  soilTarget: number;
-  currentLevel: number;
 };
 
 export type Fertilizer = {
