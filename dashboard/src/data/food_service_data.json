@@ -1,0 +1,512 @@
+{
+  "food_service_establishments": [
+    {
+      "id": "ff001",
+      "name": "QuickBurger",
+      "type": "Fast Food Chain",
+      "locations": [
+        {
+          "id": "qb001",
+          "name": "QuickBurger Brussels Central",
+          "address": "Rue Neuve 123, 1000 Brussels",
+          "historical_data": {
+            "2023": {
+              "Q4": {
+                "October": {
+                  "revenue": 145000,
+                  "food_waste_kg": 435,
+                  "waste_factor": 0.003
+                },
+                "November": {
+                  "revenue": 152000,
+                  "food_waste_kg": 456,
+                  "waste_factor": 0.003
+                },
+                "December": {
+                  "revenue": 178000,
+                  "food_waste_kg": 534,
+                  "waste_factor": 0.003
+                }
+              }
+            },
+            "2024": {
+              "Q1": {
+                "January": {
+                  "revenue": 138000,
+                  "food_waste_kg": 414,
+                  "waste_factor": 0.003
+                },
+                "February": {
+                  "revenue": 142000,
+                  "food_waste_kg": 426,
+                  "waste_factor": 0.003
+                },
+                "March": {
+                  "revenue": 148000,
+                  "food_waste_kg": 444,
+                  "waste_factor": 0.003
+                }
+              }
+            }
+          },
+          "running_average_waste_factor": 0.003,
+          "projected_data": {
+            "2024": {
+              "Q2": {
+                "April": {
+                  "projected_revenue": 155000,
+                  "estimated_waste_kg": 465
+                },
+                "May": {
+                  "projected_revenue": 162000,
+                  "estimated_waste_kg": 486
+                },
+                "June": {
+                  "projected_revenue": 168000,
+                  "estimated_waste_kg": 504
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "hosp001",
+      "name": "UZ Leuven",
+      "type": "Hospital",
+      "locations": [
+        {
+          "id": "uzl001",
+          "name": "UZ Leuven Main Campus",
+          "address": "Herestraat 49, 3000 Leuven",
+          "capacity": "1995 beds",
+          "meals_per_day": 2500,
+          "historical_data": {
+            "2023": {
+              "Q4": {
+                "October": {
+                  "revenue": 325000,
+                  "food_waste_kg": 2275,
+                  "waste_factor": 0.007
+                },
+                "November": {
+                  "revenue": 318000,
+                  "food_waste_kg": 2226,
+                  "waste_factor": 0.007
+                },
+                "December": {
+                  "revenue": 332000,
+                  "food_waste_kg": 2324,
+                  "waste_factor": 0.007
+                }
+              }
+            },
+            "2024": {
+              "Q1": {
+                "January": {
+                  "revenue": 328000,
+                  "food_waste_kg": 2296,
+                  "waste_factor": 0.007
+                },
+                "February": {
+                  "revenue": 315000,
+                  "food_waste_kg": 2205,
+                  "waste_factor": 0.007
+                },
+                "March": {
+                  "revenue": 322000,
+                  "food_waste_kg": 2254,
+                  "waste_factor": 0.007
+                }
+              }
+            }
+          },
+          "running_average_waste_factor": 0.007,
+          "projected_data": {
+            "2024": {
+              "Q2": {
+                "April": {
+                  "projected_revenue": 325000,
+                  "estimated_waste_kg": 2275
+                },
+                "May": {
+                  "projected_revenue": 328000,
+                  "estimated_waste_kg": 2296
+                },
+                "June": {
+                  "projected_revenue": 330000,
+                  "estimated_waste_kg": 2310
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "pri001",
+      "name": "Belgian Federal Prison Service",
+      "type": "Correctional Facility",
+      "locations": [
+        {
+          "id": "bfp001",
+          "name": "Beveren Prison",
+          "address": "Schaarbeekstraat 2, 9120 Beveren",
+          "capacity": "312 inmates",
+          "meals_per_day": 936,
+          "historical_data": {
+            "2023": {
+              "Q4": {
+                "October": {
+                  "revenue": 98000,
+                  "food_waste_kg": 588,
+                  "waste_factor": 0.006
+                },
+                "November": {
+                  "revenue": 96000,
+                  "food_waste_kg": 576,
+                  "waste_factor": 0.006
+                },
+                "December": {
+                  "revenue": 99000,
+                  "food_waste_kg": 594,
+                  "waste_factor": 0.006
+                }
+              }
+            },
+            "2024": {
+              "Q1": {
+                "January": {
+                  "revenue": 97000,
+                  "food_waste_kg": 582,
+                  "waste_factor": 0.006
+                },
+                "February": {
+                  "revenue": 95000,
+                  "food_waste_kg": 570,
+                  "waste_factor": 0.006
+                },
+                "March": {
+                  "revenue": 98000,
+                  "food_waste_kg": 588,
+                  "waste_factor": 0.006
+                }
+              }
+            }
+          },
+          "running_average_waste_factor": 0.006,
+          "projected_data": {
+            "2024": {
+              "Q2": {
+                "April": {
+                  "projected_revenue": 98000,
+                  "estimated_waste_kg": 588
+                },
+                "May": {
+                  "projected_revenue": 99000,
+                  "estimated_waste_kg": 594
+                },
+                "June": {
+                  "projected_revenue": 98000,
+                  "estimated_waste_kg": 588
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "uni001",
+      "name": "KU Leuven Food Services",
+      "type": "University Food Service",
+      "locations": [
+        {
+          "id": "kul001",
+          "name": "Alma 1",
+          "address": "Tiensestraat 115, 3000 Leuven",
+          "capacity": "500 seats",
+          "meals_per_day": 1200,
+          "historical_data": {
+            "2023": {
+              "Q4": {
+                "October": {
+                  "revenue": 185000,
+                  "food_waste_kg": 925,
+                  "waste_factor": 0.005
+                },
+                "November": {
+                  "revenue": 192000,
+                  "food_waste_kg": 960,
+                  "waste_factor": 0.005
+                },
+                "December": {
+                  "revenue": 145000,
+                  "food_waste_kg": 725,
+                  "waste_factor": 0.005
+                }
+              }
+            },
+            "2024": {
+              "Q1": {
+                "January": {
+                  "revenue": 178000,
+                  "food_waste_kg": 890,
+                  "waste_factor": 0.005
+                },
+                "February": {
+                  "revenue": 188000,
+                  "food_waste_kg": 940,
+                  "waste_factor": 0.005
+                },
+                "March": {
+                  "revenue": 195000,
+                  "food_waste_kg": 975,
+                  "waste_factor": 0.005
+                }
+              }
+            }
+          },
+          "running_average_waste_factor": 0.005,
+          "projected_data": {
+            "2024": {
+              "Q2": {
+                "April": {
+                  "projected_revenue": 190000,
+                  "estimated_waste_kg": 950
+                },
+                "May": {
+                  "projected_revenue": 185000,
+                  "estimated_waste_kg": 925
+                },
+                "June": {
+                  "projected_revenue": 120000,
+                  "estimated_waste_kg": 600
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "corp001",
+      "name": "Corporate Food Solutions",
+      "type": "Corporate Cafeteria",
+      "locations": [
+        {
+          "id": "cfs001",
+          "name": "EU Commission Cafeteria",
+          "address": "Rue de la Loi 200, 1049 Brussels",
+          "capacity": "800 seats",
+          "meals_per_day": 2000,
+          "historical_data": {
+            "2023": {
+              "Q4": {
+                "October": {
+                  "revenue": 245000,
+                  "food_waste_kg": 980,
+                  "waste_factor": 0.004
+                },
+                "November": {
+                  "revenue": 238000,
+                  "food_waste_kg": 952,
+                  "waste_factor": 0.004
+                },
+                "December": {
+                  "revenue": 215000,
+                  "food_waste_kg": 860,
+                  "waste_factor": 0.004
+                }
+              }
+            },
+            "2024": {
+              "Q1": {
+                "January": {
+                  "revenue": 242000,
+                  "food_waste_kg": 968,
+                  "waste_factor": 0.004
+                },
+                "February": {
+                  "revenue": 248000,
+                  "food_waste_kg": 992,
+                  "waste_factor": 0.004
+                },
+                "March": {
+                  "revenue": 252000,
+                  "food_waste_kg": 1008,
+                  "waste_factor": 0.004
+                }
+              }
+            }
+          },
+          "running_average_waste_factor": 0.004,
+          "projected_data": {
+            "2024": {
+              "Q2": {
+                "April": {
+                  "projected_revenue": 255000,
+                  "estimated_waste_kg": 1020
+                },
+                "May": {
+                  "projected_revenue": 258000,
+                  "estimated_waste_kg": 1032
+                },
+                "June": {
+                  "projected_revenue": 245000,
+                  "estimated_waste_kg": 980
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "sch001",
+      "name": "School Food Services",
+      "type": "School Cafeteria Network",
+      "locations": [
+        {
+          "id": "sfs001",
+          "name": "Sint-Pieterscollege",
+          "address": "Minderbroedersstraat 13, 3000 Leuven",
+          "capacity": "400 students",
+          "meals_per_day": 350,
+          "historical_data": {
+            "2023": {
+              "Q4": {
+                "October": {
+                  "revenue": 68000,
+                  "food_waste_kg": 340,
+                  "waste_factor": 0.005
+                },
+                "November": {
+                  "revenue": 65000,
+                  "food_waste_kg": 325,
+                  "waste_factor": 0.005
+                },
+                "December": {
+                  "revenue": 52000,
+                  "food_waste_kg": 260,
+                  "waste_factor": 0.005
+                }
+              }
+            },
+            "2024": {
+              "Q1": {
+                "January": {
+                  "revenue": 64000,
+                  "food_waste_kg": 320,
+                  "waste_factor": 0.005
+                },
+                "February": {
+                  "revenue": 66000,
+                  "food_waste_kg": 330,
+                  "waste_factor": 0.005
+                },
+                "March": {
+                  "revenue": 68000,
+                  "food_waste_kg": 340,
+                  "waste_factor": 0.005
+                }
+              }
+            }
+          },
+          "running_average_waste_factor": 0.005,
+          "projected_data": {
+            "2024": {
+              "Q2": {
+                "April": {
+                  "projected_revenue": 67000,
+                  "estimated_waste_kg": 335
+                },
+                "May": {
+                  "projected_revenue": 65000,
+                  "estimated_waste_kg": 325
+                },
+                "June": {
+                  "projected_revenue": 45000,
+                  "estimated_waste_kg": 225
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "event001",
+      "name": "Brussels Expo Catering",
+      "type": "Event Venue",
+      "locations": [
+        {
+          "id": "bec001",
+          "name": "Brussels Expo Main Hall",
+          "address": "Place de Belgique 1, 1020 Brussels",
+          "capacity": "Variable (up to 5000)",
+          "historical_data": {
+            "2023": {
+              "Q4": {
+                "October": {
+                  "revenue": 385000,
+                  "food_waste_kg": 2310,
+                  "waste_factor": 0.006
+                },
+                "November": {
+                  "revenue": 425000,
+                  "food_waste_kg": 2550,
+                  "waste_factor": 0.006
+                },
+                "December": {
+                  "revenue": 520000,
+                  "food_waste_kg": 3120,
+                  "waste_factor": 0.006
+                }
+              }
+            },
+            "2024": {
+              "Q1": {
+                "January": {
+                  "revenue": 280000,
+                  "food_waste_kg": 1680,
+                  "waste_factor": 0.006
+                },
+                "February": {
+                  "revenue": 320000,
+                  "food_waste_kg": 1920,
+                  "waste_factor": 0.006
+                },
+                "March": {
+                  "revenue": 375000,
+                  "food_waste_kg": 2250,
+                  "waste_factor": 0.006
+                }
+              }
+            }
+          },
+          "running_average_waste_factor": 0.006,
+          "projected_data": {
+            "2024": {
+              "Q2": {
+                "April": {
+                  "projected_revenue": 395000,
+                  "estimated_waste_kg": 2370
+                },
+                "May": {
+                  "projected_revenue": 420000,
+                  "estimated_waste_kg": 2520
+                },
+                "June": {
+                  "projected_revenue": 445000,
+                  "estimated_waste_kg": 2670
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+} 
