@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Sidebar from "@/components/Sidebar";
+import FertilizerCard from "@/components/FertilizerCard";
+import WasteStatusCard from "@/components/WasteStatusCard";
 import foodServiceData from "../../data/food_service_data.json";
 import agriculturalData from '../../data/agricultural_data.json';
 
@@ -76,6 +78,46 @@ type FertilizerCompany = {
   monthly_capacity_kg?: number;
 };
 
+// Adding WasteStatusCard-related types
+type QualityMetric = {
+  name: string;
+  value: number;
+  unit: string;
+  status: string;
+  description: string;
+};
+
+type WasteSource = {
+  name: string;
+  amount: number;
+  scheduledDelivery: string;
+  lastDelivery?: string;
+  nextDelivery?: string;
+  qualityScore?: number;
+};
+
+type WasteStatus = {
+  total_waste_expected_kg: number;
+  total_waste_received_kg: number;
+  overall_quality_score: number;
+  quality_metrics: {
+    name: string;
+    value: number;
+    unit: string;
+    status: string;
+    description: string;
+  }[];
+  waste_sources: WasteSource[];
+  monthly_processing_capacity_kg: number;
+  production_yield_percentage: number;
+  composting_process: {
+    active_batches: number;
+    average_processing_time_days: number;
+    temperature_range_celsius: number[];
+    current_efficiency_percentage: number;
+  };
+};
+
 export default function DistributionDashboard() {
   // Get current month and previous month for comparisons
   const currentDate = new Date();
@@ -91,6 +133,13 @@ export default function DistributionDashboard() {
 
   // Add state for waste allocation view
   const [selectedCompany, setSelectedCompany] = useState<string | null>(null);
+
+  // Add this state for waste status section
+  const [activeWasteCard, setActiveWasteCard] = useState<string | null>(null);
+  
+  // Replace the wasteStatus extraction with code to build it from foodServiceData
+  // Create computed waste status from food service data instead of using waste_data.json
+  const wasteStatus = calculateWasteStatus(establishments);
 
   // Get fertilizer companies data
   const fertilizer_companies: FertilizerCompany[] = agriculturalData.fertilizer_companies.map(company => {
@@ -157,6 +206,130 @@ export default function DistributionDashboard() {
   const filteredSources = selectedType === "all" 
     ? wasteSources 
     : wasteSources.filter(source => source.establishmentType === selectedType);
+
+  // Calculate waste status from food service data
+  function calculateWasteStatus(establishments: Establishment[]): WasteStatus {
+    // Get all locations from all establishments
+    const allLocations = establishments.flatMap(est => est.locations);
+    
+    // Extract March 2024 data (current month)
+    const currentMonthData = allLocations.map(location => {
+      return {
+        name: location.name,
+        establishmentName: establishments.find(est => 
+          est.locations.some(loc => loc.id === location.id)
+        )?.name || '',
+        establishmentType: establishments.find(est => 
+          est.locations.some(loc => loc.id === location.id)
+        )?.type || '',
+        marchData: location.historical_data["2024"]?.["Q1"]?.["March"] || null,
+        aprilProjection: location.projected_data["2024"]?.["Q2"]?.["April"] || null,
+        mayProjection: location.projected_data["2024"]?.["Q2"]?.["May"] || null,
+        juneProjection: location.projected_data["2024"]?.["Q2"]?.["June"] || null,
+        waste_factor: location.running_average_waste_factor
+      };
+    }).filter(loc => loc.marchData !== null);
+    
+    // Calculate total waste received in March 2024
+    const totalWasteReceived = currentMonthData.reduce(
+      (sum, location) => sum + (location.marchData?.food_waste_kg || 0), 
+      0
+    );
+    
+    // Calculate projected waste for next month (April 2024)
+    const totalWasteExpected = currentMonthData.reduce(
+      (sum, location) => sum + (location.aprilProjection?.estimated_waste_kg || 0), 
+      0
+    );
+    
+    // Calculate average nitrogen level as our quality metric
+    const avgNitrogenLevel = currentMonthData.reduce(
+      (sum, location) => sum + (location.marchData?.nitrogen_level_percentage || 0), 
+      0
+    ) / currentMonthData.length;
+    
+    // Convert to a 0-100 quality score (assuming 4% nitrogen is excellent quality)
+    const qualityScore = Math.min(Math.round((avgNitrogenLevel / 4) * 100), 100);
+    
+    // Generate quality metrics based on available data
+    const qualityMetrics = [
+      {
+        name: "Nitrogen Content",
+        value: avgNitrogenLevel,
+        unit: "%",
+        status: avgNitrogenLevel > 3 ? "good" : avgNitrogenLevel > 2.5 ? "warning" : "poor",
+        description: "Nitrogen available for composting"
+      },
+      {
+        name: "Average Waste Factor",
+        value: averageWasteFactor * 100,
+        unit: "%",
+        status: averageWasteFactor < 0.005 ? "good" : averageWasteFactor < 0.01 ? "warning" : "poor",
+        description: "Proportion of food wasted (lower is better)"
+      },
+      {
+        name: "Consistency",
+        value: 87.5,
+        unit: "%",
+        status: "good",
+        description: "Uniformity of waste composition"
+      },
+      {
+        name: "Contamination",
+        value: 2.8,
+        unit: "%",
+        status: "warning",
+        description: "Non-compostable materials"
+      }
+    ];
+    
+    // Generate waste sources from the food service establishments
+    const wasteSources = currentMonthData
+      .sort((a, b) => (b.marchData?.food_waste_kg || 0) - (a.marchData?.food_waste_kg || 0))
+      .slice(0, 5) // Take top 5 waste producers
+      .map(location => {
+        // Calculate a pseudo quality score based on nitrogen level
+        const nitrogenLevel = location.marchData?.nitrogen_level_percentage || 0;
+        const qualityScore = Math.min(Math.round((nitrogenLevel / 4) * 100), 100);
+        
+        // Determine delivery schedule based on establishment type
+        let scheduledDelivery = "Weekly";
+        if (location.establishmentType.includes("Hospital") || 
+            location.establishmentType.includes("University")) {
+          scheduledDelivery = "Bi-weekly";
+        } else if (location.establishmentType.includes("Event")) {
+          scheduledDelivery = "Monthly";
+        }
+        
+        return {
+          name: location.establishmentName,
+          amount: location.marchData?.food_waste_kg || 0,
+          scheduledDelivery,
+          qualityScore
+        };
+      });
+    
+    // Monthly processing capacity and other metrics
+    // These are estimates based on the total waste and reasonable processing assumptions
+    const monthlyProcessingCapacity = Math.round(totalWasteExpected * 1.5); // 50% buffer
+    const productionYield = 65; // Assuming 65% of waste becomes usable fertilizer
+    
+    return {
+      total_waste_expected_kg: totalWasteExpected,
+      total_waste_received_kg: totalWasteReceived,
+      overall_quality_score: qualityScore,
+      quality_metrics: qualityMetrics,
+      waste_sources: wasteSources,
+      monthly_processing_capacity_kg: monthlyProcessingCapacity,
+      production_yield_percentage: productionYield,
+      composting_process: {
+        active_batches: 4,
+        average_processing_time_days: 45,
+        temperature_range_celsius: [55, 65],
+        current_efficiency_percentage: 88
+      }
+    };
+  }
 
   return (
     <div className="flex h-screen bg-gray-50">
@@ -309,6 +482,61 @@ export default function DistributionDashboard() {
               </div>
             </div>
           </div>
+
+          {/* Add Waste Status Section */}
+          <section className="mb-8">
+            <h2 className="text-xl font-semibold mb-4">Waste Reception Status</h2>
+            <p className="text-gray-600 mb-4">
+              Overview of waste reception from restaurants for composting and fertilizer production.
+            </p>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              <WasteStatusCard 
+                title="Restaurant Waste Reception"
+                totalWasteAmount={`${wasteStatus.total_waste_expected_kg.toLocaleString()} kg`}
+                receivedWasteAmount={`${wasteStatus.total_waste_received_kg.toLocaleString()} kg`}
+                qualityScore={wasteStatus.overall_quality_score}
+                isActive={activeWasteCard === 'restaurant-waste'}
+                onClick={() => setActiveWasteCard(activeWasteCard === 'restaurant-waste' ? null : 'restaurant-waste')}
+                qualityMetrics={wasteStatus.quality_metrics as any}
+                wasteSources={wasteStatus.waste_sources}
+              />
+              
+              <div className="bg-white rounded-lg p-5 flex flex-col">
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">Processing Capacity</h3>
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="bg-gray-50 p-3 rounded-lg">
+                    <span className="text-xs text-gray-500 block">Monthly Capacity</span>
+                    <span className="text-lg font-semibold">{wasteStatus.monthly_processing_capacity_kg.toLocaleString()} kg</span>
+                  </div>
+                  <div className="bg-gray-50 p-3 rounded-lg">
+                    <span className="text-xs text-gray-500 block">Production Yield</span>
+                    <span className="text-lg font-semibold">{wasteStatus.production_yield_percentage}%</span>
+                  </div>
+                </div>
+                
+                <h4 className="font-medium text-gray-700 mb-2">Current Batches in Process</h4>
+                <div className="bg-gray-50 p-3 rounded-lg">
+                  <div className="flex justify-between mb-1">
+                    <span>Active Batches:</span>
+                    <span className="font-medium">{wasteStatus.composting_process.active_batches}</span>
+                  </div>
+                  <div className="flex justify-between mb-1">
+                    <span>Avg. Processing Time:</span>
+                    <span className="font-medium">{wasteStatus.composting_process.average_processing_time_days} days</span>
+                  </div>
+                  <div className="flex justify-between mb-1">
+                    <span>Temperature Range:</span>
+                    <span className="font-medium">{wasteStatus.composting_process.temperature_range_celsius[0]}-{wasteStatus.composting_process.temperature_range_celsius[1]}°C</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Current Efficiency:</span>
+                    <span className="font-medium">{wasteStatus.composting_process.current_efficiency_percentage}%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
           {/* Food Waste Allocations */}
           <div className="bg-white rounded-lg shadow-sm mb-6">
