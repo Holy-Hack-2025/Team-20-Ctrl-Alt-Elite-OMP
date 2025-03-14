@@ -1,0 +1,49 @@
+{
+  "crops": [
+    {
+      "id": "1",
+      "name": "Corn",
+      "soil_requirements": {
+        "nitrogen_needs_kg_per_hectare": 180,
+        "phosphorus_needs_kg_per_hectare": 80,
+        "carbon_needs_kg_per_hectare": 70,
+        "optimal_soil_composition": {
+          "nitrogen_ppm": 150,
+          "phosphorus_ppm": 45,
+          "carbon_ppm": 200,
+          "ph_level": 6.5
+        }
+      }
+    },
+    {
+      "id": "2",
+      "name": "Wheat",
+      "soil_requirements": {
+        "nitrogen_needs_kg_per_hectare": 120,
+        "phosphorus_needs_kg_per_hectare": 60,
+        "carbon_needs_kg_per_hectare": 50,
+        "optimal_soil_composition": {
+          "nitrogen_ppm": 120,
+          "phosphorus_ppm": 35,
+          "carbon_ppm": 180,
+          "ph_level": 6.5
+        }
+      }
+    },
+    {
+      "id": "3",
+      "name": "Soybeans",
+      "soil_requirements": {
+        "nitrogen_needs_kg_per_hectare": 0,
+        "phosphorus_needs_kg_per_hectare": 40,
+        "carbon_needs_kg_per_hectare": 60,
+        "optimal_soil_composition": {
+          "nitrogen_ppm": 20,
+          "phosphorus_ppm": 30,
+          "carbon_ppm": 170,
+          "ph_level": 6.5
+        }
+      }
+    }
+  ]
+} 
