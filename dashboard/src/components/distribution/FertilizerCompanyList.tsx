@@ -235,9 +235,6 @@ const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
                   <span className="text-sm font-medium text-blue-600">
                     {company.waste_allocation_percentage}% Allocation
                   </span>
-                  <p className="text-xs text-gray-500">
-                    {company.monthly_capacity_kg?.toLocaleString()} kg capacity
-                  </p>
                 </div>
               </div>
               

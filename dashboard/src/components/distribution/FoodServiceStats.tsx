@@ -1,4 +1,5 @@
 import React from 'react';
+import { nutrientContentByEstablishmentType, NutrientContent } from '../../data/foodWasteMinerals';
 
 // Types for food service data
 type HistoricalData = {
@@ -92,10 +93,31 @@ const FoodServiceStats: React.FC<FoodServiceStatsProps> = ({
     return sum + source.running_average_waste_factor;
   }, 0) / wasteSources.length;
 
+  // Calculate nutrient content totals
+  const nutrientTotals = wasteSources.reduce((totals, source) => {
+    const marchData = source.historical_data["2024"]?.["Q1"]?.["March"];
+    const wasteKg = marchData?.food_waste_kg || 0;
+    const nutrientContent = nutrientContentByEstablishmentType[source.establishmentType] || nutrientContentByEstablishmentType.default;
+    
+    return {
+      nitrogen: totals.nitrogen + (nutrientContent.nitrogen_kg * wasteKg),
+      carbon: totals.carbon + (nutrientContent.carbon_kg * wasteKg),
+      phosphorus: totals.phosphorus + (nutrientContent.phosphorus_kg * wasteKg),
+      lime: totals.lime + (nutrientContent.lime_kg * wasteKg)
+    };
+  }, { nitrogen: 0, carbon: 0, phosphorus: 0, lime: 0 });
+
   // Filter sources based on selected type
   const filteredSources = selectedType === "all" 
     ? wasteSources 
     : wasteSources.filter(source => source.establishmentType === selectedType);
+
+  // Helper function to format numbers with commas and thousand separators
+  const formatNumber = (value: number, decimals: number = 2) => {
+    const parts = value.toFixed(decimals).split('.');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    return parts.join(',');
+  };
 
   return (
     <>
@@ -120,6 +142,41 @@ const FoodServiceStats: React.FC<FoodServiceStatsProps> = ({
           <div className="flex items-end gap-2">
             <span className="text-2xl font-bold text-gray-900">{(averageWasteFactor * 100).toFixed(1)}%</span>
             <span className="text-sm text-blue-600 mb-1">of Revenue</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Nutrient Content Statistics */}
+      <div className="bg-white rounded-lg shadow-sm mb-6">
+        <div className="p-5 border-b border-gray-100">
+          <h2 className="text-lg font-medium text-gray-800">Total Nutrient Content in Food Waste</h2>
+        </div>
+        <div className="p-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="bg-green-50 rounded-lg p-4">
+              <h3 className="text-sm font-medium text-gray-500">Nitrogen</h3>
+              <div className="mt-2">
+                <span className="text-xl font-bold text-gray-900">{formatNumber(nutrientTotals.nitrogen, 2)} kg</span>
+              </div>
+            </div>
+            <div className="bg-green-50 rounded-lg p-4">
+              <h3 className="text-sm font-medium text-gray-500">Carbon</h3>
+              <div className="mt-2">
+                <span className="text-xl font-bold text-gray-900">{formatNumber(nutrientTotals.carbon, 2)} kg</span>
+              </div>
+            </div>
+            <div className="bg-green-50 rounded-lg p-4">
+              <h3 className="text-sm font-medium text-gray-500">Phosphorus</h3>
+              <div className="mt-2">
+                <span className="text-xl font-bold text-gray-900">{formatNumber(nutrientTotals.phosphorus, 2)} kg</span>
+              </div>
+            </div>
+            <div className="bg-green-50 rounded-lg p-4">
+              <h3 className="text-sm font-medium text-gray-500">Lime</h3>
+              <div className="mt-2">
+                <span className="text-xl font-bold text-gray-900">{formatNumber(nutrientTotals.lime, 2)} kg</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -189,38 +246,26 @@ const FoodServiceStats: React.FC<FoodServiceStatsProps> = ({
                         <span className="text-gray-600">Monthly Waste:</span>
                         <span className="font-medium text-gray-900">{currentData?.food_waste_kg.toLocaleString()} kg</span>
                       </div>
+                      <div className="mt-3 pt-2 border-t border-gray-100">
+                        <div className="text-sm font-medium text-gray-600 mb-1">Nutrient Content:</div>
+                        <div className="grid grid-cols-2 gap-2 text-sm">
+                          {Object.entries(nutrientContentByEstablishmentType[source.establishmentType] || nutrientContentByEstablishmentType.default)
+                            .map(([nutrient, value]) => {
+                              const totalNutrientContent = (value * (currentData?.food_waste_kg || 0));
+                              return (
+                                <div key={nutrient} className="flex justify-between">
+                                  <span className="text-gray-600">{nutrient.replace('_kg', '').charAt(0).toUpperCase() + nutrient.slice(1).replace('_kg', '')}:</span>
+                                  <span className="font-medium text-gray-900">{formatNumber(totalNutrientContent, 2)} kg</span>
+                                </div>
+                              );
+                            })}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               );
             })}
-          </div>
-        </div>
-      </div>
-
-      {/* Key Insights */}
-      <div className="bg-white rounded-lg shadow-sm mb-6">
-        <div className="p-5 border-b border-gray-100">
-          <h2 className="text-lg font-medium text-gray-800">Key Insights</h2>
-        </div>
-        <div className="p-5">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-blue-50 rounded-lg p-4">
-              <h3 className="font-medium text-blue-800 mb-2">Waste Patterns by Establishment Type</h3>
-              <ul className="space-y-2">
-                <li className="text-sm text-blue-700">Hospitals generate the highest volume of food waste per location</li>
-                <li className="text-sm text-blue-700">Fast food chains maintain the lowest waste factors</li>
-                <li className="text-sm text-blue-700">Educational institutions show seasonal variations in waste</li>
-              </ul>
-            </div>
-            <div className="bg-green-50 rounded-lg p-4">
-              <h3 className="font-medium text-green-800 mb-2">Optimization Opportunities</h3>
-              <ul className="space-y-2">
-                <li className="text-sm text-green-700">Implement portion control in facilities with high waste factors</li>
-                <li className="text-sm text-green-700">Focus on large-volume generators for maximum impact</li>
-                <li className="text-sm text-green-700">Consider seasonal adjustments for educational institutions</li>
-              </ul>
-            </div>
           </div>
         </div>
       </div>
