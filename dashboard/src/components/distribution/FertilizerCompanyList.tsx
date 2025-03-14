@@ -660,19 +660,47 @@ const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
                         <p className="text-sm font-medium text-gray-700 mb-2">Nutrients in Allocated Waste:</p>
                         <div className="flex justify-between text-sm">
                           <span className="text-gray-600">Nitrogen:</span>
-                          <span className="font-medium text-gray-900">{wasteAllocation.nutrients.nitrogen_kg.toFixed(2)} kg</span>
+                          <span className="font-medium text-gray-900">
+                            {Math.min(
+                              wasteAllocation.nutrients.nitrogen_kg,
+                              calculateNutrientRequirements(companySummary.fertilizerTotals, fertilizers)['Nitrogen'] > 0 
+                                ? calculateNutrientRequirements(companySummary.fertilizerTotals, fertilizers)['Nitrogen'] * (wasteAllocation.max_food_waste_percentage / 100)
+                                : 50
+                            ).toFixed(2)} kg
+                          </span>
                         </div>
                         <div className="flex justify-between text-sm">
                           <span className="text-gray-600">Phosphorus:</span>
-                          <span className="font-medium text-gray-900">{wasteAllocation.nutrients.phosphorus_kg.toFixed(2)} kg</span>
+                          <span className="font-medium text-gray-900">
+                            {Math.min(
+                              wasteAllocation.nutrients.phosphorus_kg,
+                              calculateNutrientRequirements(companySummary.fertilizerTotals, fertilizers)['Phosphorus'] > 0
+                                ? calculateNutrientRequirements(companySummary.fertilizerTotals, fertilizers)['Phosphorus'] * (wasteAllocation.max_food_waste_percentage / 100)
+                                : 50
+                            ).toFixed(2)} kg
+                          </span>
                         </div>
                         <div className="flex justify-between text-sm">
                           <span className="text-gray-600">Carbon:</span>
-                          <span className="font-medium text-gray-900">{wasteAllocation.nutrients.carbon_kg.toFixed(2)} kg</span>
+                          <span className="font-medium text-gray-900">
+                            {Math.min(
+                              wasteAllocation.nutrients.carbon_kg,
+                              calculateNutrientRequirements(companySummary.fertilizerTotals, fertilizers)['Carbon'] > 0
+                                ? calculateNutrientRequirements(companySummary.fertilizerTotals, fertilizers)['Carbon'] * (wasteAllocation.max_food_waste_percentage / 100)
+                                : 50
+                            ).toFixed(2)} kg
+                          </span>
                         </div>
                         <div className="flex justify-between text-sm">
                           <span className="text-gray-600">Lime:</span>
-                          <span className="font-medium text-gray-900">{wasteAllocation.nutrients.lime_kg.toFixed(2)} kg</span>
+                          <span className="font-medium text-gray-900">
+                            {Math.min(
+                              wasteAllocation.nutrients.lime_kg,
+                              calculateNutrientRequirements(companySummary.fertilizerTotals, fertilizers)['Lime'] > 0
+                                ? calculateNutrientRequirements(companySummary.fertilizerTotals, fertilizers)['Lime'] * (wasteAllocation.max_food_waste_percentage / 100)
+                                : 50
+                            ).toFixed(2)} kg
+                          </span>
                         </div>
                       </div>
                     )}
