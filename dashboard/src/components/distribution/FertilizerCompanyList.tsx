@@ -28,6 +28,11 @@ type FertilizerSummary = {
   totalAmount: number;  // Total amount of all fertilizers
 };
 
+// Type for nutrient totals
+type NutrientTotals = {
+  [nutrientName: string]: number;
+};
+
 // Type for the exported fertilizer data
 export type FertilizerExportData = {
   headers: string[];
@@ -92,6 +97,29 @@ export const convertFertilizerDataToCsv = (data: FertilizerExportData): string =
   csvContent += `Total,${data.totals.fertilizerAmounts.join(',')},${data.totals.grandTotal}\n`;
 
   return csvContent;
+};
+
+// Utility function to calculate nutrient requirements
+const calculateNutrientRequirements = (
+  fertilizerTotals: { [key: string]: number },
+  fertilizers: Fertilizer[]
+): NutrientTotals => {
+  const nutrientTotals: NutrientTotals = {};
+
+  Object.entries(fertilizerTotals).forEach(([fertilizerName, amount]) => {
+    const fertilizer = fertilizers.find(f => f.title === fertilizerName);
+    if (fertilizer) {
+      fertilizer.components.forEach(component => {
+        const nutrientAmount = (amount * component.percentage) / 100;
+        if (!nutrientTotals[component.name]) {
+          nutrientTotals[component.name] = 0;
+        }
+        nutrientTotals[component.name] += nutrientAmount;
+      });
+    }
+  });
+
+  return nutrientTotals;
 };
 
 const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
@@ -252,6 +280,19 @@ const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
                     <div className="flex justify-between text-sm font-medium pt-1 border-t border-gray-200">
                       <span className="text-gray-700">Total:</span>
                       <span className="text-blue-600">{companySummary.totalAmount.toLocaleString()} kg</span>
+                    </div>
+
+                    {/* Add Nutrient Requirements Section */}
+                    <div className="mt-3 pt-3 border-t border-gray-200">
+                      <p className="text-sm font-medium text-gray-700 mb-2">Nutrient Requirements:</p>
+                      {Object.entries(calculateNutrientRequirements(companySummary.fertilizerTotals, fertilizers)).map(
+                        ([nutrient, amount]) => (
+                          <div key={nutrient} className="flex justify-between text-sm">
+                            <span className="text-gray-600">{nutrient}:</span>
+                            <span className="font-medium text-gray-900">{amount.toLocaleString()} kg</span>
+                          </div>
+                        )
+                      )}
                     </div>
                   </div>
                 </div>
