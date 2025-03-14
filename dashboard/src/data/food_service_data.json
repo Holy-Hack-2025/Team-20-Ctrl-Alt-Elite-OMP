@@ -16,20 +16,17 @@
                 "October": {
                   "revenue": 145000,
                   "food_waste_kg": 435,
-                  "waste_factor": 0.03,
-                  "nitrogen_level_percentage": 2.8
+                  "waste_factor": 0.003
                 },
                 "November": {
                   "revenue": 152000,
                   "food_waste_kg": 456,
-                  "waste_factor": 0.03,
-                  "nitrogen_level_percentage": 2.7
+                  "waste_factor": 0.003
                 },
                 "December": {
                   "revenue": 178000,
                   "food_waste_kg": 534,
-                  "waste_factor": 0.03,
-                  "nitrogen_level_percentage": 2.9
+                  "waste_factor": 0.003
                 }
               }
             },
@@ -38,25 +35,22 @@
                 "January": {
                   "revenue": 138000,
                   "food_waste_kg": 414,
-                  "waste_factor": 0.03,
-                  "nitrogen_level_percentage": 2.6
+                  "waste_factor": 0.003
                 },
                 "February": {
                   "revenue": 142000,
                   "food_waste_kg": 426,
-                  "waste_factor": 0.03,
-                  "nitrogen_level_percentage": 2.8
+                  "waste_factor": 0.003
                 },
                 "March": {
                   "revenue": 148000,
                   "food_waste_kg": 444,
-                  "waste_factor": 0.03,
-                  "nitrogen_level_percentage": 2.7
+                  "waste_factor": 0.003
                 }
               }
             }
           },
-          "running_average_waste_factor": 0.03,
+          "running_average_waste_factor": 0.003,
           "projected_data": {
             "2024": {
               "Q2": {
@@ -95,20 +89,17 @@
                 "October": {
                   "revenue": 325000,
                   "food_waste_kg": 2275,
-                  "waste_factor": 0.007,
-                  "nitrogen_level_percentage": 3.2
+                  "waste_factor": 0.007
                 },
                 "November": {
                   "revenue": 318000,
                   "food_waste_kg": 2226,
-                  "waste_factor": 0.007,
-                  "nitrogen_level_percentage": 3.1
+                  "waste_factor": 0.007
                 },
                 "December": {
                   "revenue": 332000,
                   "food_waste_kg": 2324,
-                  "waste_factor": 0.007,
-                  "nitrogen_level_percentage": 3.3
+                  "waste_factor": 0.007
                 }
               }
             },
@@ -117,20 +108,17 @@
                 "January": {
                   "revenue": 328000,
                   "food_waste_kg": 2296,
-                  "waste_factor": 0.007,
-                  "nitrogen_level_percentage": 3.2
+                  "waste_factor": 0.007
                 },
                 "February": {
                   "revenue": 315000,
                   "food_waste_kg": 2205,
-                  "waste_factor": 0.007,
-                  "nitrogen_level_percentage": 3.1
+                  "waste_factor": 0.007
                 },
                 "March": {
                   "revenue": 322000,
                   "food_waste_kg": 2254,
-                  "waste_factor": 0.007,
-                  "nitrogen_level_percentage": 3.2
+                  "waste_factor": 0.007
                 }
               }
             }
@@ -174,20 +162,17 @@
                 "October": {
                   "revenue": 485000,
                   "food_waste_kg": 2425,
-                  "waste_factor": 0.005,
-                  "nitrogen_level_percentage": 2.9
+                  "waste_factor": 0.005
                 },
                 "November": {
                   "revenue": 492000,
                   "food_waste_kg": 2460,
-                  "waste_factor": 0.005,
-                  "nitrogen_level_percentage": 2.8
+                  "waste_factor": 0.005
                 },
                 "December": {
                   "revenue": 345000,
                   "food_waste_kg": 1725,
-                  "waste_factor": 0.005,
-                  "nitrogen_level_percentage": 2.7
+                  "waste_factor": 0.005
                 }
               }
             },
@@ -196,20 +181,17 @@
                 "January": {
                   "revenue": 478000,
                   "food_waste_kg": 2390,
-                  "waste_factor": 0.005,
-                  "nitrogen_level_percentage": 2.8
+                  "waste_factor": 0.005
                 },
                 "February": {
                   "revenue": 488000,
                   "food_waste_kg": 2440,
-                  "waste_factor": 0.005,
-                  "nitrogen_level_percentage": 2.9
+                  "waste_factor": 0.005
                 },
                 "March": {
                   "revenue": 495000,
                   "food_waste_kg": 2475,
-                  "waste_factor": 0.005,
-                  "nitrogen_level_percentage": 2.8
+                  "waste_factor": 0.005
                 }
               }
             }
@@ -275,20 +257,17 @@
                 "October": {
                   "revenue": 98000,
                   "food_waste_kg": 588,
-                  "waste_factor": 0.006,
-                  "nitrogen_level_percentage": 2.6
+                  "waste_factor": 0.006
                 },
                 "November": {
                   "revenue": 96000,
                   "food_waste_kg": 576,
-                  "waste_factor": 0.006,
-                  "nitrogen_level_percentage": 2.5
+                  "waste_factor": 0.006
                 },
                 "December": {
                   "revenue": 99000,
                   "food_waste_kg": 594,
-                  "waste_factor": 0.006,
-                  "nitrogen_level_percentage": 2.7
+                  "waste_factor": 0.006
                 }
               }
             },
@@ -297,20 +276,17 @@
                 "January": {
                   "revenue": 97000,
                   "food_waste_kg": 582,
-                  "waste_factor": 0.006,
-                  "nitrogen_level_percentage": 2.6
+                  "waste_factor": 0.006
                 },
                 "February": {
                   "revenue": 95000,
                   "food_waste_kg": 570,
-                  "waste_factor": 0.006,
-                  "nitrogen_level_percentage": 2.5
+                  "waste_factor": 0.006
                 },
                 "March": {
                   "revenue": 98000,
                   "food_waste_kg": 588,
-                  "waste_factor": 0.006,
-                  "nitrogen_level_percentage": 2.6
+                  "waste_factor": 0.006
                 }
               }
             }
@@ -354,20 +330,17 @@
                 "October": {
                   "revenue": 245000,
                   "food_waste_kg": 980,
-                  "waste_factor": 0.004,
-                  "nitrogen_level_percentage": 2.4
+                  "waste_factor": 0.004
                 },
                 "November": {
                   "revenue": 238000,
                   "food_waste_kg": 952,
-                  "waste_factor": 0.004,
-                  "nitrogen_level_percentage": 2.3
+                  "waste_factor": 0.004
                 },
                 "December": {
                   "revenue": 215000,
                   "food_waste_kg": 860,
-                  "waste_factor": 0.004,
-                  "nitrogen_level_percentage": 2.5
+                  "waste_factor": 0.004
                 }
               }
             },
@@ -376,20 +349,17 @@
                 "January": {
                   "revenue": 242000,
                   "food_waste_kg": 968,
-                  "waste_factor": 0.004,
-                  "nitrogen_level_percentage": 2.4
+                  "waste_factor": 0.004
                 },
                 "February": {
                   "revenue": 248000,
                   "food_waste_kg": 992,
-                  "waste_factor": 0.004,
-                  "nitrogen_level_percentage": 2.3
+                  "waste_factor": 0.004
                 },
                 "March": {
                   "revenue": 252000,
                   "food_waste_kg": 1008,
-                  "waste_factor": 0.004,
-                  "nitrogen_level_percentage": 2.4
+                  "waste_factor": 0.004
                 }
               }
             }
@@ -433,20 +403,17 @@
                 "October": {
                   "revenue": 68000,
                   "food_waste_kg": 340,
-                  "waste_factor": 0.005,
-                  "nitrogen_level_percentage": 2.7
+                  "waste_factor": 0.005
                 },
                 "November": {
                   "revenue": 65000,
                   "food_waste_kg": 325,
-                  "waste_factor": 0.005,
-                  "nitrogen_level_percentage": 2.6
+                  "waste_factor": 0.005
                 },
                 "December": {
                   "revenue": 52000,
                   "food_waste_kg": 260,
-                  "waste_factor": 0.005,
-                  "nitrogen_level_percentage": 2.8
+                  "waste_factor": 0.005
                 }
               }
             },
@@ -455,20 +422,17 @@
                 "January": {
                   "revenue": 64000,
                   "food_waste_kg": 320,
-                  "waste_factor": 0.005,
-                  "nitrogen_level_percentage": 2.7
+                  "waste_factor": 0.005
                 },
                 "February": {
                   "revenue": 66000,
                   "food_waste_kg": 330,
-                  "waste_factor": 0.005,
-                  "nitrogen_level_percentage": 2.6
+                  "waste_factor": 0.005
                 },
                 "March": {
                   "revenue": 68000,
                   "food_waste_kg": 340,
-                  "waste_factor": 0.005,
-                  "nitrogen_level_percentage": 2.7
+                  "waste_factor": 0.005
                 }
               }
             }
@@ -511,20 +475,17 @@
                 "October": {
                   "revenue": 385000,
                   "food_waste_kg": 2310,
-                  "waste_factor": 0.006,
-                  "nitrogen_level_percentage": 2.8
+                  "waste_factor": 0.006
                 },
                 "November": {
                   "revenue": 425000,
                   "food_waste_kg": 2550,
-                  "waste_factor": 0.006,
-                  "nitrogen_level_percentage": 2.9
+                  "waste_factor": 0.006
                 },
                 "December": {
                   "revenue": 520000,
                   "food_waste_kg": 3120,
-                  "waste_factor": 0.006,
-                  "nitrogen_level_percentage": 3.0
+                  "waste_factor": 0.006
                 }
               }
             },
@@ -533,20 +494,17 @@
                 "January": {
                   "revenue": 280000,
                   "food_waste_kg": 1680,
-                  "waste_factor": 0.006,
-                  "nitrogen_level_percentage": 2.7
+                  "waste_factor": 0.006
                 },
                 "February": {
                   "revenue": 320000,
                   "food_waste_kg": 1920,
-                  "waste_factor": 0.006,
-                  "nitrogen_level_percentage": 2.8
+                  "waste_factor": 0.006
                 },
                 "March": {
                   "revenue": 375000,
                   "food_waste_kg": 2250,
-                  "waste_factor": 0.006,
-                  "nitrogen_level_percentage": 2.9
+                  "waste_factor": 0.006
                 }
               }
             }

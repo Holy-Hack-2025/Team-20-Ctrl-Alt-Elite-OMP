@@ -1,0 +1,42 @@
+{
+  "fertilizers": [
+    {
+      "id": "1",
+      "title": "NPK 15-15-15",
+      "description": "Balanced fertilizer with equal parts Nitrogen, Phosphorus, and Carbon",
+      "components": [
+        {
+          "name": "Nitrogen",
+          "percentage": 15
+        },
+        {
+          "name": "Phosphorus",
+          "percentage": 15
+        },
+        {
+          "name": "Carbon",
+          "percentage": 15
+        }
+      ],
+      "baseAmount": 100,
+      "unit": "kg/ha"
+    },
+    {
+      "id": "2",
+      "title": "High Carbon Mix",
+      "description": "Fertilizer with high carbon content",
+      "components": [
+        {
+          "name": "Nitrogen",
+          "percentage": 10
+        },
+        {
+          "name": "Carbon",
+          "percentage": 30
+        }
+      ],
+      "baseAmount": 100,
+      "unit": "kg/ha"
+    }
+  ]
+} 

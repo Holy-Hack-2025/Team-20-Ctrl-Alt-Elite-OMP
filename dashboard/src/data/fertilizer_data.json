@@ -1,0 +1,200 @@
+{
+  "fertilizers": [
+    {
+      "id": 1,
+      "title": "EcoGrow All-Purpose",
+      "baseAmount": 250,
+      "predictedIncrease": "15-20%",
+      "components": [
+        {
+          "name": "Nitrogen",
+          "percentage": 14
+        },
+        {
+          "name": "Phosphorus",
+          "percentage": 10
+        },
+        {
+          "name": "Carbon",
+          "percentage": 12
+        }
+      ],
+      "targetCrops": ["corn", "wheat", "soybeans"]
+    },
+    {
+      "id": 2,
+      "title": "GreenHarvest Organic",
+      "baseAmount": 180,
+      "predictedIncrease": "10-12%",
+      "components": [
+        {
+          "name": "Nitrogen",
+          "percentage": 8
+        },
+        {
+          "name": "Phosphorus",
+          "percentage": 6
+        },
+        {
+          "name": "Carbon",
+          "percentage": 9
+        },
+        {
+          "name": "Carbon",
+          "percentage": 15
+        }
+      ],
+      "targetCrops": ["vegetables", "fruits", "herbs"]
+    },
+    {
+      "id": 3,
+      "title": "SoilBoost Pro",
+      "baseAmount": 320,
+      "predictedIncrease": "18-22%",
+      "components": [
+        {
+          "name": "Nitrogen",
+          "percentage": 18
+        },
+        {
+          "name": "Phosphorus",
+          "percentage": 14
+        },
+        {
+          "name": "Carbon",
+          "percentage": 16
+        },
+        {
+          "name": "Lime",
+          "percentage": 5
+        }
+      ],
+      "targetCrops": ["cotton", "rice", "sugarcane"]
+    },
+    {
+      "id": 4,
+      "title": "CropGuard Balance",
+      "baseAmount": 220,
+      "predictedIncrease": "12-16%",
+      "components": [
+        {
+          "name": "Nitrogen",
+          "percentage": 12
+        },
+        {
+          "name": "Phosphorus",
+          "percentage": 12
+        },
+        {
+          "name": "Carbon",
+          "percentage": 12
+        },
+        {
+          "name": "Carbon",
+          "percentage": 8
+        }
+      ],
+      "targetCrops": ["barley", "oats", "rye"]
+    },
+    {
+      "id": 5,
+      "title": "VineyardPlus Elite",
+      "baseAmount": 280,
+      "predictedIncrease": "16-19%",
+      "components": [
+        {
+          "name": "Nitrogen",
+          "percentage": 10
+        },
+        {
+          "name": "Phosphorus",
+          "percentage": 16
+        },
+        {
+          "name": "Carbon",
+          "percentage": 20
+        },
+        {
+          "name": "Lime",
+          "percentage": 8
+        }
+      ],
+      "targetCrops": ["grapes", "berries", "orchards"]
+    },
+    {
+      "id": 6,
+      "title": "RootForce Intensive",
+      "baseAmount": 300,
+      "predictedIncrease": "20-25%",
+      "components": [
+        {
+          "name": "Nitrogen",
+          "percentage": 22
+        },
+        {
+          "name": "Phosphorus",
+          "percentage": 18
+        },
+        {
+          "name": "Carbon",
+          "percentage": 10
+        },
+        {
+          "name": "Lime",
+          "percentage": 3
+        }
+      ],
+      "targetCrops": ["potatoes", "carrots", "beets"]
+    },
+    {
+      "id": 7,
+      "title": "TropicalBlend Supreme",
+      "baseAmount": 260,
+      "predictedIncrease": "14-18%",
+      "components": [
+        {
+          "name": "Nitrogen",
+          "percentage": 15
+        },
+        {
+          "name": "Phosphorus",
+          "percentage": 20
+        },
+        {
+          "name": "Carbon",
+          "percentage": 18
+        },
+        {
+          "name": "Lime",
+          "percentage": 6
+        }
+      ],
+      "targetCrops": ["bananas", "pineapples", "mangoes"]
+    },
+    {
+      "id": 8,
+      "title": "AridZone Special",
+      "baseAmount": 340,
+      "predictedIncrease": "17-21%",
+      "components": [
+        {
+          "name": "Nitrogen",
+          "percentage": 35
+        },
+        {
+          "name": "Phosphorus",
+          "percentage": 8
+        },
+        {
+          "name": "Carbon",
+          "percentage": 15
+        },
+        {
+          "name": "Lime",
+          "percentage": 10
+        }
+      ],
+      "targetCrops": ["olives", "dates", "citrus"]
+    }
+  ]
+} 
