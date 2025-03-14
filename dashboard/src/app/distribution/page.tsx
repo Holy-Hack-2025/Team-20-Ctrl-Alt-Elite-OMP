@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Sidebar from "@/components/Sidebar";
+import FertilizerCard from "@/components/FertilizerCard";
+import WasteStatusCard from "@/components/WasteStatusCard";
 import foodServiceData from "../../data/food_service_data.json";
 import agriculturalData from '../../data/agricultural_data.json';
 import fertilizerData from '../../data/fertilizer_data.json';
