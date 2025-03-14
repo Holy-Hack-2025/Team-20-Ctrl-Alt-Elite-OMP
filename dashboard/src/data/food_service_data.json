@@ -9,23 +9,27 @@
           "id": "qb001",
           "name": "QuickBurger Brussels Central",
           "address": "Rue Neuve 123, 1000 Brussels",
+          "meals_per_day": 800,
           "historical_data": {
             "2023": {
               "Q4": {
                 "October": {
                   "revenue": 145000,
                   "food_waste_kg": 435,
-                  "waste_factor": 0.003
+                  "waste_factor": 0.03,
+                  "nitrogen_level_percentage": 2.8
                 },
                 "November": {
                   "revenue": 152000,
                   "food_waste_kg": 456,
-                  "waste_factor": 0.003
+                  "waste_factor": 0.03,
+                  "nitrogen_level_percentage": 2.7
                 },
                 "December": {
                   "revenue": 178000,
                   "food_waste_kg": 534,
-                  "waste_factor": 0.003
+                  "waste_factor": 0.03,
+                  "nitrogen_level_percentage": 2.9
                 }
               }
             },
@@ -34,22 +38,25 @@
                 "January": {
                   "revenue": 138000,
                   "food_waste_kg": 414,
-                  "waste_factor": 0.003
+                  "waste_factor": 0.03,
+                  "nitrogen_level_percentage": 2.6
                 },
                 "February": {
                   "revenue": 142000,
                   "food_waste_kg": 426,
-                  "waste_factor": 0.003
+                  "waste_factor": 0.03,
+                  "nitrogen_level_percentage": 2.8
                 },
                 "March": {
                   "revenue": 148000,
                   "food_waste_kg": 444,
-                  "waste_factor": 0.003
+                  "waste_factor": 0.03,
+                  "nitrogen_level_percentage": 2.7
                 }
               }
             }
           },
-          "running_average_waste_factor": 0.003,
+          "running_average_waste_factor": 0.03,
           "projected_data": {
             "2024": {
               "Q2": {
@@ -80,25 +87,28 @@
           "id": "uzl001",
           "name": "UZ Leuven Main Campus",
           "address": "Herestraat 49, 3000 Leuven",
-          "capacity": "1995 beds",
           "meals_per_day": 2500,
+          "capacity": "1995 beds",
           "historical_data": {
             "2023": {
               "Q4": {
                 "October": {
                   "revenue": 325000,
                   "food_waste_kg": 2275,
-                  "waste_factor": 0.007
+                  "waste_factor": 0.007,
+                  "nitrogen_level_percentage": 3.2
                 },
                 "November": {
                   "revenue": 318000,
                   "food_waste_kg": 2226,
-                  "waste_factor": 0.007
+                  "waste_factor": 0.007,
+                  "nitrogen_level_percentage": 3.1
                 },
                 "December": {
                   "revenue": 332000,
                   "food_waste_kg": 2324,
-                  "waste_factor": 0.007
+                  "waste_factor": 0.007,
+                  "nitrogen_level_percentage": 3.3
                 }
               }
             },
@@ -107,17 +117,20 @@
                 "January": {
                   "revenue": 328000,
                   "food_waste_kg": 2296,
-                  "waste_factor": 0.007
+                  "waste_factor": 0.007,
+                  "nitrogen_level_percentage": 3.2
                 },
                 "February": {
                   "revenue": 315000,
                   "food_waste_kg": 2205,
-                  "waste_factor": 0.007
+                  "waste_factor": 0.007,
+                  "nitrogen_level_percentage": 3.1
                 },
                 "March": {
                   "revenue": 322000,
                   "food_waste_kg": 2254,
-                  "waste_factor": 0.007
+                  "waste_factor": 0.007,
+                  "nitrogen_level_percentage": 3.2
                 }
               }
             }
@@ -145,6 +158,107 @@
       ]
     },
     {
+      "id": "uni001",
+      "name": "KU Leuven Food Services",
+      "type": "University Food Service",
+      "locations": [
+        {
+          "id": "alma001",
+          "name": "Alma",
+          "address": "Multiple Locations in Leuven",
+          "meals_per_day": 4000,
+          "capacity": "2000 seats total",
+          "historical_data": {
+            "2023": {
+              "Q4": {
+                "October": {
+                  "revenue": 485000,
+                  "food_waste_kg": 2425,
+                  "waste_factor": 0.005,
+                  "nitrogen_level_percentage": 2.9
+                },
+                "November": {
+                  "revenue": 492000,
+                  "food_waste_kg": 2460,
+                  "waste_factor": 0.005,
+                  "nitrogen_level_percentage": 2.8
+                },
+                "December": {
+                  "revenue": 345000,
+                  "food_waste_kg": 1725,
+                  "waste_factor": 0.005,
+                  "nitrogen_level_percentage": 2.7
+                }
+              }
+            },
+            "2024": {
+              "Q1": {
+                "January": {
+                  "revenue": 478000,
+                  "food_waste_kg": 2390,
+                  "waste_factor": 0.005,
+                  "nitrogen_level_percentage": 2.8
+                },
+                "February": {
+                  "revenue": 488000,
+                  "food_waste_kg": 2440,
+                  "waste_factor": 0.005,
+                  "nitrogen_level_percentage": 2.9
+                },
+                "March": {
+                  "revenue": 495000,
+                  "food_waste_kg": 2475,
+                  "waste_factor": 0.005,
+                  "nitrogen_level_percentage": 2.8
+                }
+              }
+            }
+          },
+          "running_average_waste_factor": 0.005,
+          "projected_data": {
+            "2024": {
+              "Q2": {
+                "April": {
+                  "projected_revenue": 490000,
+                  "estimated_waste_kg": 2450
+                },
+                "May": {
+                  "projected_revenue": 485000,
+                  "estimated_waste_kg": 2425
+                },
+                "June": {
+                  "projected_revenue": 320000,
+                  "estimated_waste_kg": 1600
+                }
+              }
+            }
+          },
+          "locations_included": [
+            {
+              "name": "Alma 1",
+              "address": "Tiensestraat 115, 3000 Leuven",
+              "daily_meals": 1200
+            },
+            {
+              "name": "Alma 2",
+              "address": "E. Van Evenstraat 2C, 3000 Leuven",
+              "daily_meals": 1500
+            },
+            {
+              "name": "Alma 3",
+              "address": "Steengroevenlaan 3, 3001 Heverlee",
+              "daily_meals": 900
+            },
+            {
+              "name": "Alma Gasthuisberg",
+              "address": "Herestraat 49, 3000 Leuven",
+              "daily_meals": 400
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "pri001",
       "name": "Belgian Federal Prison Service",
       "type": "Correctional Facility",
@@ -153,25 +267,28 @@
           "id": "bfp001",
           "name": "Beveren Prison",
           "address": "Schaarbeekstraat 2, 9120 Beveren",
-          "capacity": "312 inmates",
           "meals_per_day": 936,
+          "capacity": "312 inmates",
           "historical_data": {
             "2023": {
               "Q4": {
                 "October": {
                   "revenue": 98000,
                   "food_waste_kg": 588,
-                  "waste_factor": 0.006
+                  "waste_factor": 0.006,
+                  "nitrogen_level_percentage": 2.6
                 },
                 "November": {
                   "revenue": 96000,
                   "food_waste_kg": 576,
-                  "waste_factor": 0.006
+                  "waste_factor": 0.006,
+                  "nitrogen_level_percentage": 2.5
                 },
                 "December": {
                   "revenue": 99000,
                   "food_waste_kg": 594,
-                  "waste_factor": 0.006
+                  "waste_factor": 0.006,
+                  "nitrogen_level_percentage": 2.7
                 }
               }
             },
@@ -180,17 +297,20 @@
                 "January": {
                   "revenue": 97000,
                   "food_waste_kg": 582,
-                  "waste_factor": 0.006
+                  "waste_factor": 0.006,
+                  "nitrogen_level_percentage": 2.6
                 },
                 "February": {
                   "revenue": 95000,
                   "food_waste_kg": 570,
-                  "waste_factor": 0.006
+                  "waste_factor": 0.006,
+                  "nitrogen_level_percentage": 2.5
                 },
                 "March": {
                   "revenue": 98000,
                   "food_waste_kg": 588,
-                  "waste_factor": 0.006
+                  "waste_factor": 0.006,
+                  "nitrogen_level_percentage": 2.6
                 }
               }
             }
@@ -218,79 +338,6 @@
       ]
     },
     {
-      "id": "uni001",
-      "name": "KU Leuven Food Services",
-      "type": "University Food Service",
-      "locations": [
-        {
-          "id": "kul001",
-          "name": "Alma 1",
-          "address": "Tiensestraat 115, 3000 Leuven",
-          "capacity": "500 seats",
-          "meals_per_day": 1200,
-          "historical_data": {
-            "2023": {
-              "Q4": {
-                "October": {
-                  "revenue": 185000,
-                  "food_waste_kg": 925,
-                  "waste_factor": 0.005
-                },
-                "November": {
-                  "revenue": 192000,
-                  "food_waste_kg": 960,
-                  "waste_factor": 0.005
-                },
-                "December": {
-                  "revenue": 145000,
-                  "food_waste_kg": 725,
-                  "waste_factor": 0.005
-                }
-              }
-            },
-            "2024": {
-              "Q1": {
-                "January": {
-                  "revenue": 178000,
-                  "food_waste_kg": 890,
-                  "waste_factor": 0.005
-                },
-                "February": {
-                  "revenue": 188000,
-                  "food_waste_kg": 940,
-                  "waste_factor": 0.005
-                },
-                "March": {
-                  "revenue": 195000,
-                  "food_waste_kg": 975,
-                  "waste_factor": 0.005
-                }
-              }
-            }
-          },
-          "running_average_waste_factor": 0.005,
-          "projected_data": {
-            "2024": {
-              "Q2": {
-                "April": {
-                  "projected_revenue": 190000,
-                  "estimated_waste_kg": 950
-                },
-                "May": {
-                  "projected_revenue": 185000,
-                  "estimated_waste_kg": 925
-                },
-                "June": {
-                  "projected_revenue": 120000,
-                  "estimated_waste_kg": 600
-                }
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
       "id": "corp001",
       "name": "Corporate Food Solutions",
       "type": "Corporate Cafeteria",
@@ -299,25 +346,28 @@
           "id": "cfs001",
           "name": "EU Commission Cafeteria",
           "address": "Rue de la Loi 200, 1049 Brussels",
-          "capacity": "800 seats",
           "meals_per_day": 2000,
+          "capacity": "800 seats",
           "historical_data": {
             "2023": {
               "Q4": {
                 "October": {
                   "revenue": 245000,
                   "food_waste_kg": 980,
-                  "waste_factor": 0.004
+                  "waste_factor": 0.004,
+                  "nitrogen_level_percentage": 2.4
                 },
                 "November": {
                   "revenue": 238000,
                   "food_waste_kg": 952,
-                  "waste_factor": 0.004
+                  "waste_factor": 0.004,
+                  "nitrogen_level_percentage": 2.3
                 },
                 "December": {
                   "revenue": 215000,
                   "food_waste_kg": 860,
-                  "waste_factor": 0.004
+                  "waste_factor": 0.004,
+                  "nitrogen_level_percentage": 2.5
                 }
               }
             },
@@ -326,17 +376,20 @@
                 "January": {
                   "revenue": 242000,
                   "food_waste_kg": 968,
-                  "waste_factor": 0.004
+                  "waste_factor": 0.004,
+                  "nitrogen_level_percentage": 2.4
                 },
                 "February": {
                   "revenue": 248000,
                   "food_waste_kg": 992,
-                  "waste_factor": 0.004
+                  "waste_factor": 0.004,
+                  "nitrogen_level_percentage": 2.3
                 },
                 "March": {
                   "revenue": 252000,
                   "food_waste_kg": 1008,
-                  "waste_factor": 0.004
+                  "waste_factor": 0.004,
+                  "nitrogen_level_percentage": 2.4
                 }
               }
             }
@@ -372,25 +425,28 @@
           "id": "sfs001",
           "name": "Sint-Pieterscollege",
           "address": "Minderbroedersstraat 13, 3000 Leuven",
-          "capacity": "400 students",
           "meals_per_day": 350,
+          "capacity": "400 students",
           "historical_data": {
             "2023": {
               "Q4": {
                 "October": {
                   "revenue": 68000,
                   "food_waste_kg": 340,
-                  "waste_factor": 0.005
+                  "waste_factor": 0.005,
+                  "nitrogen_level_percentage": 2.7
                 },
                 "November": {
                   "revenue": 65000,
                   "food_waste_kg": 325,
-                  "waste_factor": 0.005
+                  "waste_factor": 0.005,
+                  "nitrogen_level_percentage": 2.6
                 },
                 "December": {
                   "revenue": 52000,
                   "food_waste_kg": 260,
-                  "waste_factor": 0.005
+                  "waste_factor": 0.005,
+                  "nitrogen_level_percentage": 2.8
                 }
               }
             },
@@ -399,17 +455,20 @@
                 "January": {
                   "revenue": 64000,
                   "food_waste_kg": 320,
-                  "waste_factor": 0.005
+                  "waste_factor": 0.005,
+                  "nitrogen_level_percentage": 2.7
                 },
                 "February": {
                   "revenue": 66000,
                   "food_waste_kg": 330,
-                  "waste_factor": 0.005
+                  "waste_factor": 0.005,
+                  "nitrogen_level_percentage": 2.6
                 },
                 "March": {
                   "revenue": 68000,
                   "food_waste_kg": 340,
-                  "waste_factor": 0.005
+                  "waste_factor": 0.005,
+                  "nitrogen_level_percentage": 2.7
                 }
               }
             }
@@ -452,17 +511,20 @@
                 "October": {
                   "revenue": 385000,
                   "food_waste_kg": 2310,
-                  "waste_factor": 0.006
+                  "waste_factor": 0.006,
+                  "nitrogen_level_percentage": 2.8
                 },
                 "November": {
                   "revenue": 425000,
                   "food_waste_kg": 2550,
-                  "waste_factor": 0.006
+                  "waste_factor": 0.006,
+                  "nitrogen_level_percentage": 2.9
                 },
                 "December": {
                   "revenue": 520000,
                   "food_waste_kg": 3120,
-                  "waste_factor": 0.006
+                  "waste_factor": 0.006,
+                  "nitrogen_level_percentage": 3.0
                 }
               }
             },
@@ -471,17 +533,20 @@
                 "January": {
                   "revenue": 280000,
                   "food_waste_kg": 1680,
-                  "waste_factor": 0.006
+                  "waste_factor": 0.006,
+                  "nitrogen_level_percentage": 2.7
                 },
                 "February": {
                   "revenue": 320000,
                   "food_waste_kg": 1920,
-                  "waste_factor": 0.006
+                  "waste_factor": 0.006,
+                  "nitrogen_level_percentage": 2.8
                 },
                 "March": {
                   "revenue": 375000,
                   "food_waste_kg": 2250,
-                  "waste_factor": 0.006
+                  "waste_factor": 0.006,
+                  "nitrogen_level_percentage": 2.9
                 }
               }
             }

@@ -36,7 +36,14 @@
               "expected_harvest_date": "2025-07-20",
               "soil_requirements": {
                 "ideal_ph": "6.5-7.0",
-                "nitrogen_needs_kg_per_hectare": 180
+                "nitrogen_needs_kg_per_hectare": 180,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "1.5-2.0",
+                  "nitrogen_ppm": "150-200",
+                  "phosphorus_ppm": "25-30",
+                  "potassium_ppm": "175-250",
+                  "lime_requirement_tonnes_per_hectare": "2-3"
+                }
               }
             },
             {
@@ -46,7 +53,14 @@
               "expected_harvest_date": "2024-10-15",
               "soil_requirements": {
                 "ideal_ph": "6.5-7.0",
-                "nitrogen_needs_kg_per_hectare": 120
+                "nitrogen_needs_kg_per_hectare": 120,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "1.2-1.8",
+                  "nitrogen_ppm": "120-160",
+                  "phosphorus_ppm": "30-40",
+                  "potassium_ppm": "200-300",
+                  "lime_requirement_tonnes_per_hectare": "1.5-2.5"
+                }
               }
             }
           ]
@@ -82,7 +96,14 @@
               "expected_harvest_date": "2024-10-10",
               "soil_requirements": {
                 "ideal_ph": "6.0-7.0",
-                "nitrogen_needs_kg_per_hectare": 150
+                "nitrogen_needs_kg_per_hectare": 150,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "1.0-1.5",
+                  "nitrogen_ppm": "140-180",
+                  "phosphorus_ppm": "20-30",
+                  "potassium_ppm": "150-200",
+                  "lime_requirement_tonnes_per_hectare": "1-2"
+                }
               }
             }
           ]
@@ -118,7 +139,14 @@
               "expected_harvest_date": "2024-09-30",
               "soil_requirements": {
                 "ideal_ph": "6.0-7.0",
-                "nitrogen_needs_kg_per_hectare": 90
+                "nitrogen_needs_kg_per_hectare": 90,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "1.5-2.0",
+                  "nitrogen_ppm": "100-150",
+                  "phosphorus_ppm": "35-45",
+                  "potassium_ppm": "175-225",
+                  "lime_requirement_tonnes_per_hectare": "1.5-2"
+                }
               }
             },
             {
@@ -128,7 +156,14 @@
               "expected_harvest_date": "2024-06-30",
               "soil_requirements": {
                 "ideal_ph": "6.5-7.0",
-                "nitrogen_needs_kg_per_hectare": 150
+                "nitrogen_needs_kg_per_hectare": 150,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "1.5-2.0",
+                  "nitrogen_ppm": "150-200",
+                  "phosphorus_ppm": "25-30",
+                  "potassium_ppm": "175-250",
+                  "lime_requirement_tonnes_per_hectare": "2-3"
+                }
               }
             }
           ]
@@ -164,7 +199,14 @@
               "expected_harvest_date": "2024-08-15",
               "soil_requirements": {
                 "ideal_ph": "6.0-7.0",
-                "nitrogen_needs_kg_per_hectare": 110
+                "nitrogen_needs_kg_per_hectare": 110,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "1.5-2.0",
+                  "nitrogen_ppm": "100-150",
+                  "phosphorus_ppm": "35-45",
+                  "potassium_ppm": "175-225",
+                  "lime_requirement_tonnes_per_hectare": "1.5-2"
+                }
               }
             },
             {
@@ -174,7 +216,14 @@
               "expected_harvest_date": "2024-10-30",
               "soil_requirements": {
                 "ideal_ph": "6.0-6.8",
-                "nitrogen_needs_kg_per_hectare": 120
+                "nitrogen_needs_kg_per_hectare": 120,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "1.5-2.0",
+                  "nitrogen_ppm": "100-150",
+                  "phosphorus_ppm": "35-45",
+                  "potassium_ppm": "175-225",
+                  "lime_requirement_tonnes_per_hectare": "1.5-2"
+                }
               }
             }
           ]
@@ -217,7 +266,14 @@
               "expected_harvest_date": "2024-10-01",
               "soil_requirements": {
                 "ideal_ph": "6.5-7.0",
-                "nitrogen_needs_kg_per_hectare": 120
+                "nitrogen_needs_kg_per_hectare": 120,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "1.5-2.0",
+                  "nitrogen_ppm": "120-160",
+                  "phosphorus_ppm": "30-40",
+                  "potassium_ppm": "200-300",
+                  "lime_requirement_tonnes_per_hectare": "1.5-2.5"
+                }
               }
             }
           ]
@@ -253,7 +309,14 @@
               "expected_harvest_date": "2024-11-15",
               "soil_requirements": {
                 "ideal_ph": "6.0-7.0",
-                "nitrogen_needs_kg_per_hectare": 140
+                "nitrogen_needs_kg_per_hectare": 140,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "1.5-2.0",
+                  "nitrogen_ppm": "140-180",
+                  "phosphorus_ppm": "25-35",
+                  "potassium_ppm": "160-220",
+                  "lime_requirement_tonnes_per_hectare": "1-2"
+                }
               }
             }
           ]
@@ -296,7 +359,14 @@
               "expected_harvest_date": "2025-07-15",
               "soil_requirements": {
                 "ideal_ph": "6.0-7.0",
-                "nitrogen_needs_kg_per_hectare": 100
+                "nitrogen_needs_kg_per_hectare": 100,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "1.5-2.0",
+                  "nitrogen_ppm": "100-150",
+                  "phosphorus_ppm": "25-35",
+                  "potassium_ppm": "175-250",
+                  "lime_requirement_tonnes_per_hectare": "1-2"
+                }
               }
             }
           ]
@@ -332,7 +402,14 @@
               "expected_harvest_date": "2025-07-15",
               "soil_requirements": {
                 "ideal_ph": "5.8-6.8",
-                "nitrogen_needs_kg_per_hectare": 110
+                "nitrogen_needs_kg_per_hectare": 110,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "1.2-1.8",
+                  "nitrogen_ppm": "100-140",
+                  "phosphorus_ppm": "25-35",
+                  "potassium_ppm": "160-220",
+                  "lime_requirement_tonnes_per_hectare": "1.5-2.5"
+                }
               }
             }
           ]
@@ -368,7 +445,14 @@
               "expected_harvest_date": "2024-09-15",
               "soil_requirements": {
                 "ideal_ph": "6.0-7.5",
-                "nitrogen_needs_kg_per_hectare": 100
+                "nitrogen_needs_kg_per_hectare": 100,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "1.2-1.8",
+                  "nitrogen_ppm": "140-180",
+                  "phosphorus_ppm": "25-35",
+                  "potassium_ppm": "160-220",
+                  "lime_requirement_tonnes_per_hectare": "1-2"
+                }
               }
             }
           ]
@@ -411,7 +495,14 @@
               "expected_harvest_date": "2024-08-15",
               "soil_requirements": {
                 "ideal_ph": "6.0-6.8",
-                "nitrogen_needs_kg_per_hectare": 100
+                "nitrogen_needs_kg_per_hectare": 100,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "1.5-2.0",
+                  "nitrogen_ppm": "100-150",
+                  "phosphorus_ppm": "35-45",
+                  "potassium_ppm": "175-225",
+                  "lime_requirement_tonnes_per_hectare": "1.5-2"
+                }
               }
             }
           ]
@@ -447,7 +538,14 @@
               "expected_harvest_date": "2024-11-30",
               "soil_requirements": {
                 "ideal_ph": "5.5-6.8",
-                "nitrogen_needs_kg_per_hectare": 180
+                "nitrogen_needs_kg_per_hectare": 180,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "2.0-3.0",
+                  "nitrogen_ppm": "200-250",
+                  "phosphorus_ppm": "40-60",
+                  "potassium_ppm": "250-350",
+                  "lime_requirement_tonnes_per_hectare": "1-1.5"
+                }
               }
             }
           ]
@@ -483,7 +581,14 @@
               "expected_harvest_date": "2024-10-31",
               "soil_requirements": {
                 "ideal_ph": "5.5-6.8",
-                "nitrogen_needs_kg_per_hectare": 160
+                "nitrogen_needs_kg_per_hectare": 160,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "1.5-2.0",
+                  "nitrogen_ppm": "150-200",
+                  "phosphorus_ppm": "25-35",
+                  "potassium_ppm": "175-250",
+                  "lime_requirement_tonnes_per_hectare": "1.5-2"
+                }
               }
             }
           ]
@@ -526,7 +631,14 @@
               "expected_harvest_date": "2024-09-30",
               "soil_requirements": {
                 "ideal_ph": "6.0-7.0",
-                "nitrogen_needs_kg_per_hectare": 80
+                "nitrogen_needs_kg_per_hectare": 80,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "1.8-2.2",
+                  "nitrogen_ppm": "80-120",
+                  "phosphorus_ppm": "30-40",
+                  "potassium_ppm": "150-200",
+                  "lime_requirement_tonnes_per_hectare": "2-3"
+                }
               }
             }
           ]
@@ -562,7 +674,14 @@
               "expected_harvest_date": "2025-07-15",
               "soil_requirements": {
                 "ideal_ph": "6.5-7.0",
-                "nitrogen_needs_kg_per_hectare": 180
+                "nitrogen_needs_kg_per_hectare": 180,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "1.5-2.0",
+                  "nitrogen_ppm": "150-200",
+                  "phosphorus_ppm": "25-30",
+                  "potassium_ppm": "175-250",
+                  "lime_requirement_tonnes_per_hectare": "2-3"
+                }
               }
             }
           ]
@@ -598,7 +717,14 @@
               "expected_harvest_date": "2024-09-15",
               "soil_requirements": {
                 "ideal_ph": "5.8-6.5",
-                "nitrogen_needs_kg_per_hectare": 200
+                "nitrogen_needs_kg_per_hectare": 200,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "1.8-2.5",
+                  "nitrogen_ppm": "180-220",
+                  "phosphorus_ppm": "45-60",
+                  "potassium_ppm": "250-350",
+                  "lime_requirement_tonnes_per_hectare": "2-3"
+                }
               }
             }
           ]
@@ -641,7 +767,14 @@
               "expected_harvest_date": "2024-10-15",
               "soil_requirements": {
                 "ideal_ph": "6.2-6.8",
-                "nitrogen_needs_kg_per_hectare": 130
+                "nitrogen_needs_kg_per_hectare": 130,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "2.0-2.5",
+                  "nitrogen_ppm": "120-160",
+                  "phosphorus_ppm": "30-40",
+                  "potassium_ppm": "180-240",
+                  "lime_requirement_tonnes_per_hectare": "1.5-2"
+                }
               }
             }
           ]
@@ -677,7 +810,14 @@
               "expected_harvest_date": "2024-09-30",
               "soil_requirements": {
                 "ideal_ph": "6.0-7.5",
-                "nitrogen_needs_kg_per_hectare": 150
+                "nitrogen_needs_kg_per_hectare": 150,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "1.2-1.8",
+                  "nitrogen_ppm": "140-180",
+                  "phosphorus_ppm": "25-35",
+                  "potassium_ppm": "160-220",
+                  "lime_requirement_tonnes_per_hectare": "1-2"
+                }
               }
             }
           ]
@@ -720,7 +860,14 @@
               "expected_harvest_date": "2024-11-30",
               "soil_requirements": {
                 "ideal_ph": "5.5-6.5",
-                "nitrogen_needs_kg_per_hectare": 250
+                "nitrogen_needs_kg_per_hectare": 250,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "2.0-3.0",
+                  "nitrogen_ppm": "200-250",
+                  "phosphorus_ppm": "40-60",
+                  "potassium_ppm": "250-350",
+                  "lime_requirement_tonnes_per_hectare": "1-1.5"
+                }
               }
             }
           ]
@@ -756,7 +903,14 @@
               "expected_harvest_date": "2024-07-15",
               "soil_requirements": {
                 "ideal_ph": "6.0-7.0",
-                "nitrogen_needs_kg_per_hectare": 110
+                "nitrogen_needs_kg_per_hectare": 110,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "1.5-2.0",
+                  "nitrogen_ppm": "100-150",
+                  "phosphorus_ppm": "25-35",
+                  "potassium_ppm": "175-250",
+                  "lime_requirement_tonnes_per_hectare": "1-2"
+                }
               }
             }
           ]
@@ -799,7 +953,14 @@
               "expected_harvest_date": "2024-12-15",
               "soil_requirements": {
                 "ideal_ph": "6.0-6.8",
-                "nitrogen_needs_kg_per_hectare": 170
+                "nitrogen_needs_kg_per_hectare": 170,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "2.0-2.5",
+                  "nitrogen_ppm": "160-200",
+                  "phosphorus_ppm": "35-45",
+                  "potassium_ppm": "200-280",
+                  "lime_requirement_tonnes_per_hectare": "1.5-2"
+                }
               }
             }
           ]
@@ -835,7 +996,14 @@
               "expected_harvest_date": "2024-10-15",
               "soil_requirements": {
                 "ideal_ph": "6.0-7.0",
-                "nitrogen_needs_kg_per_hectare": 150
+                "nitrogen_needs_kg_per_hectare": 150,
+                "optimal_soil_concentrations": {
+                  "organic_carbon_percentage": "1.5-2.0",
+                  "nitrogen_ppm": "140-180",
+                  "phosphorus_ppm": "30-40",
+                  "potassium_ppm": "180-240",
+                  "lime_requirement_tonnes_per_hectare": "1.5-2"
+                }
               }
             }
           ]
