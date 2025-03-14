@@ -1,0 +1,115 @@
+{
+  "fertilizers": [
+    {
+      "id": 1,
+      "title": "NitroBalance Plus",
+      "baseAmount": 2800,
+      "predictedIncrease": "+12%",
+      "components": [
+        {
+          "name": "Nitrogen",
+          "percentage": 50,
+          "trend": "up",
+          "soilTarget": 50,
+          "currentLevel": 45
+        },
+        {
+          "name": "Phosphorus",
+          "percentage": 35,
+          "trend": "up",
+          "soilTarget": 35,
+          "currentLevel": 28
+        },
+        {
+          "name": "Potassium",
+          "percentage": 12.5,
+          "trend": "stable",
+          "soilTarget": 20,
+          "currentLevel": 18
+        },
+        {
+          "name": "Lime",
+          "percentage": 2.5,
+          "trend": "down",
+          "soilTarget": 15,
+          "currentLevel": 12
+        }
+      ],
+      "targetCrops": ["Winter Wheat", "Sugar Beets"]
+    },
+    {
+      "id": 2,
+      "title": "RootBoost K+",
+      "baseAmount": 2100,
+      "predictedIncrease": "+8%",
+      "components": [
+        {
+          "name": "Carbon",
+          "percentage": 42.86,
+          "trend": "up",
+          "soilTarget": 40,
+          "currentLevel": 35
+        },
+        {
+          "name": "Phosphorus",
+          "percentage": 33.33,
+          "trend": "stable",
+          "soilTarget": 30,
+          "currentLevel": 28
+        },
+        {
+          "name": "Potassium",
+          "percentage": 15.71,
+          "trend": "up",
+          "soilTarget": 25,
+          "currentLevel": 20
+        },
+        {
+          "name": "Lime",
+          "percentage": 8.1,
+          "trend": "down",
+          "soilTarget": 15,
+          "currentLevel": 12
+        }
+      ],
+      "targetCrops": ["Potatoes", "Corn"]
+    },
+    {
+      "id": 3,
+      "title": "CarbonRich Pro",
+      "baseAmount": 2500,
+      "predictedIncrease": "+12%",
+      "components": [
+        {
+          "name": "Carbon",
+          "percentage": 47,
+          "trend": "up",
+          "soilTarget": 45,
+          "currentLevel": 40
+        },
+        {
+          "name": "Phosphorus",
+          "percentage": 35.2,
+          "trend": "up",
+          "soilTarget": 35,
+          "currentLevel": 30
+        },
+        {
+          "name": "Potassium",
+          "percentage": 10.8,
+          "trend": "stable",
+          "soilTarget": 20,
+          "currentLevel": 18
+        },
+        {
+          "name": "Lime",
+          "percentage": 7,
+          "trend": "down",
+          "soilTarget": 15,
+          "currentLevel": 12
+        }
+      ],
+      "targetCrops": ["Soybeans", "Sunflowers"]
+    }
+  ]
+} 
