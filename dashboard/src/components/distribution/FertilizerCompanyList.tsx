@@ -28,6 +28,72 @@ type FertilizerSummary = {
   totalAmount: number;  // Total amount of all fertilizers
 };
 
+// Type for the exported fertilizer data
+export type FertilizerExportData = {
+  headers: string[];
+  companies: {
+    name: string;
+    fertilizerAmounts: number[];
+    total: number;
+  }[];
+  totals: {
+    fertilizerAmounts: number[];
+    grandTotal: number;
+  };
+};
+
+// Utility function to generate fertilizer data
+export const generateFertilizerExportData = (summaries: FertilizerSummary[]): FertilizerExportData => {
+  // Get all unique fertilizer types
+  const allFertilizerTypes = new Set<string>();
+  summaries.forEach(company => {
+    Object.keys(company.fertilizerTotals).forEach(fertilizerType => {
+      allFertilizerTypes.add(fertilizerType);
+    });
+  });
+  const fertilizerTypes = Array.from(allFertilizerTypes).sort();
+
+  // Generate headers
+  const headers = ['Company Name', ...fertilizerTypes.map(type => `${type} (kg)`), 'Total (kg)'];
+
+  // Generate company data
+  const companies = summaries.map(company => ({
+    name: company.companyName,
+    fertilizerAmounts: fertilizerTypes.map(type => company.fertilizerTotals[type] || 0),
+    total: company.totalAmount
+  }));
+
+  // Calculate totals
+  const fertilizerTotals = fertilizerTypes.map(type =>
+    summaries.reduce((sum, company) => sum + (company.fertilizerTotals[type] || 0), 0)
+  );
+  const grandTotal = summaries.reduce((sum, company) => sum + company.totalAmount, 0);
+
+  return {
+    headers,
+    companies,
+    totals: {
+      fertilizerAmounts: fertilizerTotals,
+      grandTotal
+    }
+  };
+};
+
+// Function to convert export data to CSV
+export const convertFertilizerDataToCsv = (data: FertilizerExportData): string => {
+  let csvContent = data.headers.join(',') + '\n';
+
+  // Add company rows
+  data.companies.forEach(company => {
+    csvContent += `${company.name},${company.fertilizerAmounts.join(',')},${company.total}\n`;
+  });
+
+  // Add totals row
+  csvContent += `Total,${data.totals.fertilizerAmounts.join(',')},${data.totals.grandTotal}\n`;
+
+  return csvContent;
+};
+
 const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
   fertilizerCompanies,
   selectedCompany,
@@ -118,48 +184,11 @@ const FertilizerCompanyList: React.FC<FertilizerCompanyListProps> = ({
     setSummaries(newSummaries);
   }, [fertilizerCompanies, fertilizers]);
 
-  // Function to export fertilizer requirements data
+  // Updated export function to use the new utility functions
   const exportFertilizerData = () => {
-    // Get all unique fertilizer types across all companies
-    const allFertilizerTypes = new Set<string>();
-    summaries.forEach(company => {
-      Object.keys(company.fertilizerTotals).forEach(fertilizerType => {
-        allFertilizerTypes.add(fertilizerType);
-      });
-    });
-    const fertilizerTypes = Array.from(allFertilizerTypes).sort();
+    const exportData = generateFertilizerExportData(summaries);
+    const csvContent = convertFertilizerDataToCsv(exportData);
 
-    // Create CSV headers
-    let csvContent = "Company Name";
-    fertilizerTypes.forEach(type => {
-      csvContent += `,${type} (kg)`;
-    });
-    csvContent += ",Total (kg)\n";
-
-    // Add data for each company
-    summaries.forEach(company => {
-      csvContent += `${company.companyName}`;
-      
-      // Add amount for each fertilizer type (0 if not used)
-      fertilizerTypes.forEach(type => {
-        const amount = company.fertilizerTotals[type] || 0;
-        csvContent += `,${amount}`;
-      });
-      
-      // Add total
-      csvContent += `,${company.totalAmount}\n`;
-    });
-
-    // Add totals row
-    csvContent += `Total`;
-    fertilizerTypes.forEach(type => {
-      const totalForType = summaries.reduce((sum, company) => sum + (company.fertilizerTotals[type] || 0), 0);
-      csvContent += `,${totalForType}`;
-    });
-    const grandTotal = summaries.reduce((sum, company) => sum + company.totalAmount, 0);
-    csvContent += `,${grandTotal}\n`;
-
-    // Create and trigger download
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement('a');
     const url = URL.createObjectURL(blob);
