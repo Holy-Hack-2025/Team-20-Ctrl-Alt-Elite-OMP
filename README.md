@@ -41,29 +41,6 @@ Before running the application, make sure you have the following installed:
    ```
 
 5. **Access the application**:
-   - Open your browser and navigate to [http://localhost:3000](http://localhost:3000)
+   - Open your browser and navigate to [http://localhost:3000/distribution](http://localhost:3000/distribution)
+   - This is the main page where you can view and manage food waste distribution
    - The page will automatically update as you make changes to the code
-
-## Project Structure
-
-```
-dashboard/
-│-- src/ # Source code directory
-│   │-- components/ # React components
-│   │-- types/ # TypeScript type definitions
-│   │-- utils/ # Utility functions
-│-- public/ # Static assets
-```
-
-## Need Help?
-
-If you encounter any issues:
-1. Make sure all prerequisites are properly installed
-2. Try removing the `node_modules` folder and running `npm install` again
-3. Contact the project maintainers for support
-
-## Contributing
-
-- Make sure your code is clean and well documented
-- Follow coding standards and best practices
-- Submit your changes through pull requests
